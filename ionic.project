@@ -1,0 +1,9 @@
+{
+ "gulpStartupTasks": [
+     "bower",
+     "watch",
+     "sass"
+ ],
+  "name": "M",
+  "app_id": ""
+}
