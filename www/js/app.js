@@ -1,13 +1,6 @@
-// Ionic Starter App
+angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput"])
 
-// angular.module is a global place for creating, registering and retrieving Angular modules
-// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
-// the 2nd parameter is an array of 'requires'
-// 'starter.services' is found in services.js
-// 'starter.controllers' is found in controllers.js
-angular.module("miApp", ["ionic", "pascalprecht.translate"])
-
-.run(function($ionicPlatform) {
+  .run(function ($ionicPlatform, $rootScope, $state, $translate) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
@@ -20,30 +13,38 @@ angular.module("miApp", ["ionic", "pascalprecht.translate"])
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
+    $translate.use("hr");
+    $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) => {
+      if (fromState.name !== "login" && (toState.name === "login" || toState.name === "signup")) {
+        $state.go(fromState.name);
+      }
+    })
   });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
   $stateProvider
-
-
-  // Each tab has its own nav history stack:
-
-
     .state("signup", {
       url: "/signup",
       templateUrl: "templates/modules/signup/signup_template.html",
       controller: "SignupCtrl"
+    })
+
+    .state("login", {
+      url: "/login",
+      templateUrl: "templates/modules/login/login_template.html",
+      controller: "LoginCtrl"
+    })
+    .state("app", {
+      abstract: true,
+      url: "/app"
+    })
+
+    .state('dashboard', {
+      url: '/dashboard',
+      templateUrl: 'templates/modules/dashboard/dashboard_template.html',
+      controller: 'DashboardCtrl'
     });
-
-
-
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise("/signup");
-
 });

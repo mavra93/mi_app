@@ -1,0 +1,15 @@
+{
+  "signup": {
+    "title": "Registracija",
+    "email": "Email",
+    "password": "Lozinka",
+    "repeatPassword": "Ponovi lozinku",
+    "username": "Korisničko ime",
+    "signUp": "Registriraj me",
+    "haveAccount": "Već imate račun",
+    "login": "Prijava",
+    "tooShort": "Lozinka mora sadržavati najmanje 6 znaka",
+    "passDontMatch": "Lozinke nisu jednake"
+  },
+  "auth/email-already-in-use": "Email već postoji!"
+}

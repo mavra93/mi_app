@@ -1,0 +1,15 @@
+{
+  "signup": {
+    "title": "Sign up",
+    "email": "Email",
+    "password": "Password",
+    "repeatPassword": "Repeat password",
+    "username": "Username",
+    "signUp": "Sign up",
+    "haveAccount": "Already have an account?",
+    "login": "Login",
+    "tooShort": "Password should have at least 6 characters",
+    "passDontMatch": "Passwords don't match"
+  },
+  "auth/email-already-in-use": "Email already exists!"
+}

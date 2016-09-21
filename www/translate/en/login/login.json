@@ -1,0 +1,12 @@
+{
+  "login": {
+    "title": "Login",
+    "email": "Email",
+    "password": "Password",
+    "login": "Login",
+    "dontHaveAccount": "Don't have an account?",
+    "register": "Register"
+  },
+  "auth/user-not-found": "User not found",
+  "auth/wrong-password": "Wrong password"
+}

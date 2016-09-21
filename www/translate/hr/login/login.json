@@ -1,0 +1,12 @@
+{
+  "login": {
+    "title": "Prijava",
+    "email": "Email",
+    "password": "Lozinka",
+    "login": "Prijava",
+    "dontHaveAccount": "Nemate račun?",
+    "register": "Registracija"
+  },
+  "auth/user-not-found": "Korisnik nije pronađen. Provjerite ispravnost email adrese",
+  "auth/wrong-password": "Kriva lozinka"
+}
