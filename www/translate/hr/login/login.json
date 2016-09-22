@@ -5,7 +5,8 @@
     "password": "Lozinka",
     "login": "Prijava",
     "dontHaveAccount": "Nemate račun?",
-    "register": "Registracija"
+    "register": "Registracija",
+    "rememberMe": "Zapamti me"
   },
   "auth/user-not-found": "Korisnik nije pronađen. Provjerite ispravnost email adrese",
   "auth/wrong-password": "Kriva lozinka"

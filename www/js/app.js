@@ -1,4 +1,4 @@
-angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput"])
+angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule"])
 
   .run(function ($ionicPlatform, $rootScope, $state, $translate) {
   $ionicPlatform.ready(function() {
@@ -14,11 +14,14 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput"])
       StatusBar.styleDefault();
     }
     $translate.use("hr");
-    $rootScope.$on('$stateChangeStart', (event, toState, toParams, fromState, fromParams, options) => {
-      if (fromState.name !== "login" && (toState.name === "login" || toState.name === "signup")) {
-        $state.go(fromState.name);
+    $ionicPlatform.registerBackButtonAction(function (event) {
+      if ($state.current.name == "login") {
+        navigator.app.exitApp();
       }
-    })
+      else {
+        navigator.app.backHistory();
+      }
+    }, 100);
   });
 })
 

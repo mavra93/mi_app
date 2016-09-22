@@ -5,7 +5,8 @@
     "password": "Password",
     "login": "Login",
     "dontHaveAccount": "Don't have an account?",
-    "register": "Register"
+    "register": "Register",
+    "rememberMe": "Remember me"
   },
   "auth/user-not-found": "User not found",
   "auth/wrong-password": "Wrong password"

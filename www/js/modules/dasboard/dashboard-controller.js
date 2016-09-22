@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('miApp').controller('DashboardCtrl', function ($scope, $state, Auth) {
-  firebase.auth().onAuthStateChanged(function (user) {
+  firebase.auth().onAuthStateChanged(user => {
     if (user) {
       $scope.user = user.email;
     } else {

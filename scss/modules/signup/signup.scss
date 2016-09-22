@@ -18,7 +18,7 @@
       border: none;
       input {
         background: transparent;
-        border-bottom: 1px solid $input-blue-border;
+        border-bottom: 1px solid $light-blue;
       }
       .input-label {
         color: white;
@@ -34,7 +34,7 @@
         font-size: 18px;
       }
       .button-block {
-        background: $input-blue-border;
+        background: $light-blue;
         &:active {
           background: transparent;
         }
@@ -43,11 +43,11 @@
         color: white;
       }
       .button-outline {
-        border-color: $input-blue-border;
+        border-color: $light-blue;
         width: 100%;
         color: white;
         &:active {
-          background: $input-blue-border;
+          background: $light-blue;
         }
       }
     }
