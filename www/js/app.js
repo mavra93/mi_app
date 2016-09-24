@@ -1,4 +1,4 @@
-angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule"])
+angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ionic.contrib.NativeDrawer"])
 
   .run(function ($ionicPlatform, $rootScope, $state, $translate) {
   $ionicPlatform.ready(function() {
@@ -39,15 +39,22 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
       controller: "LoginCtrl"
     })
     .state("app", {
+      url: '/app',
       abstract: true,
-      url: "/app"
+      templateUrl: 'templates/modules/sidemenu/sidemenu_template.html',
+      controller: 'SidemenuCtrl'
     })
 
-    .state('dashboard', {
+
+    .state('app.dashboard', {
       url: '/dashboard',
-      templateUrl: 'templates/modules/dashboard/dashboard_template.html',
-      controller: 'DashboardCtrl'
+      views: {
+        menuContent: {
+          templateUrl: 'templates/modules/dashboard/dashboard_template.html',
+          controller: 'DashboardCtrl'
+        }
+      }
     });
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise("/signup");
+  $urlRouterProvider.otherwise("/login");
 });

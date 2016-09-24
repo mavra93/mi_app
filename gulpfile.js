@@ -18,6 +18,7 @@ var fs = require("fs");
 var paths = {
   sass: ['./scss/**/*.scss'],
   javascript: [
+    './www/js/common/**/*.js',
     './www/js/modules/**/*.js',
     './www/translations/*.js',
     '!./www/js/app.js',
@@ -85,7 +86,7 @@ gulp.task('watch', function() {
   gulp.watch("./scss/!**!/!*.scss'", ['scss']);
 });
 
-gulp.task('bower', ["index"], function () {
+gulp.task('bower', ["translate", "index"], function () {
   gulp.src('./www/index.html')
     .pipe(inject(gulp.src(bowerFiles({
       paths: {

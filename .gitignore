@@ -7,3 +7,4 @@ plugins/
 .idea
 www/translations
 www/lib
+www/css
