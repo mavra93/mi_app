@@ -1,0 +1,32 @@
+<ion-view>
+  <div class="login-register-wrapper">
+    <div class="register-login-header">
+      <h1 class="title">{{"login.title" | translate}}</h1>
+    </div>
+    <div class="register-login-content">
+      <form name="RegisterForm" novalidate>
+        <ion-md-input type="email" ng-model="user.email" name="email" placeholder="{{'login.email' | translate}}"
+                      ng-required="true"></ion-md-input>
+        <ion-md-input type="password" ng-model="user.password" name="password"
+                      placeholder="{{'login.password' | translate}}" ng-required="true"></ion-md-input>
+        <div class="register-login-buttons-wrapper">
+          <div class="mi-checkbox">
+            <ion-checkbox ng-click="rememberMe()">{{"login.rememberMe" | translate}}</ion-checkbox>
+          </div>
+
+          <div class="login-button">
+            <button class="button button-block button-positive" ng-disabled="RegisterForm.$invalid" ng-click="login()">
+              {{"login.login" | translate}}
+            </button>
+            <p class="error" ng-show="error">{{error | translate}}</p>
+
+            <p class="signup-login-message">{{"login.dontHaveAccount" | translate}}</p>
+            <button class="button button-outline button-positive" ui-sref="signup">
+              {{"login.register" | translate}}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-view>

@@ -1,36 +1,39 @@
 <ion-view>
-  <ion-header-bar class="bar-dark">
-    <h1 class="title">Registracija</h1>
-  </ion-header-bar>
-  <div class="ionic login " style="background-image: url('image/slika10.jpg');">
-    <div class="hero no-header flat">
-      <div class="content">
-        <i class="ion-map icon hero-icon royal-bg"></i>
-
-        <h1>M&I</h1>
-      </div>
+  <div class="login-register-wrapper">
+    <div class="register-login-header">
+      <h1 class="title">{{"signup.title" | translate}}</h1>
     </div>
-    <div class="list">
-      <label class="item item-input item-md-label" highlight-color="balanced" type="text"><input type="text"
-                                                                                                 ng-model="user.email"><span
-        class="input-label">Email</span>
+    <div class="register-login-content">
+      <form name="RegisterForm" novalidate>
+        <ion-md-input type="email" ng-model="user.email" name="email" placeholder="{{'signup.email' | translate}}"
+                      ng-required="true"></ion-md-input>
+        <ion-md-input type="text" ng-model="user.username" name="username"
+                      placeholder="{{'signup.username' | translate}}" ng-required="true"></ion-md-input>
+        <ion-md-input type="password" ng-model="user.password" name="password"
+                      placeholder="{{'signup.password' | translate}}" ng-required="true"
+                      ng-minlength="6"></ion-md-input>
+        <span ng-show="RegisterForm.password.$dirty &&  RegisterForm.password.$error.minlength"><p class="error">
+          {{"signup.tooShort" | translate}}</p></span>
+        <ion-md-input type="password" ng-model="repeatPassword" name="repeatPassword"
+                      placeholder="{{'signup.repeatPassword' | translate}}"></ion-md-input>
+        <span ng-show="RegisterForm.repeatPassword.$dirty &&  repeatPassword !== user.password"><p class="error">
+          {{"signup.passDontMatch" | translate}}</p></span>
 
-        <div class="highlight highlight-balanced"></div>
-      </label>
-    </div>
-    <div class="padding">
-      <button class="button button-block button-positive waves-effect waves-button waves-light" ng-click="signup()">
-        Registriraj me
-      </button>
-      <div class="error" ng-if="errorMessage" ng-bind="errorMessage">
-      </div>
-      <div class="button-bar">
-        <button
-          class="button button-small button-outline button-assertive light-bg icon-left  waves-effect waves-button waves-light"
-          ui-sref="login">Imam račun
-        </button>
+        <div class="register-login-buttons-wrapper">
+          <div class="login-button">
+            <button class="button button-block button-positive"
+                    ng-disabled="RegisterForm.$invalid || repeatPassword !== user.password" ng-click="signUp()">
+              {{"signup.signUp" | translate}}
+            </button>
+            <p class="error" ng-show="error">{{error | translate}}</p>
 
-      </div>
+            <p class="signup-login-message">{{"signup.haveAccount" | translate}}</p>
+            <button class="button button-outline button-positive" ui-sref="login">
+              {{"signup.login" | translate}}
+            </button>
+          </div>
+        </div>
+      </form>
     </div>
   </div>
 </ion-view>

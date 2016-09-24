@@ -1,0 +1,19 @@
+.mi-checkbox {
+  label {
+    border: none;
+    color: white;
+    font-size: 16px;
+    .checkbox input:before, .checkbox-icon:before {
+      background: transparent;
+      border-radius: 0;
+    }
+    .checkbox .checkbox-icon:before, .checkbox input:before {
+      border-color: $light-blue;
+    }
+    .checkbox input:checked + .checkbox-icon:before, .checkbox input:checked:before {
+      background: $light-blue;
+      border-color: $light-blue;
+      border-radius: 0;
+    }
+  }
+}
