@@ -25,7 +25,8 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
   });
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider, $translateProvider) {
+  $translateProvider.useSanitizeValueStrategy("sanitizeParameters");
   $stateProvider
     .state("signup", {
       url: "/signup",

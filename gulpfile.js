@@ -32,7 +32,7 @@ var paths = {
   ]
 };
 
-gulp.task('default', ['sass', "bower"]);
+gulp.task('default', ['sass', "bower"], browserSync.reload());
 
 
 gulp.task('scss', function () {
@@ -95,8 +95,6 @@ gulp.task('bower', ["translate", "index"], function () {
       }
     }), {read: false}), {name: 'bower', relative: true}))
     .pipe(gulp.dest('./www'));
-  browserSync.reload();
-
 });
 
 
