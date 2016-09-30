@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('miApp').controller('SignupCtrl', function ($scope, $state, Auth) {
+angular.module('miApp').controller('SignupCtrl', function ($scope, $state, Auth, localStorageService) {
   $scope.user = {
     username: "",
     email: "",
@@ -8,9 +8,10 @@ angular.module('miApp').controller('SignupCtrl', function ($scope, $state, Auth)
   };
 
   $scope.signUp = function () {
-    Auth.createUser($scope.user.username, $scope.user.email, $scope.user.password).then((user) => {
+    Auth.createUser($scope.user.email, $scope.user.password).then((user) => {
       Auth.setUser(user.uid, $scope.user.username, user.email);
-      $state.go("dashboard");
+      localStorageService.set("user", "logged_into");
+      $state.go("app.dashboard", {'username': $scope.user.username});
     }).catch(error => {
       $scope.error = error.code;
     })

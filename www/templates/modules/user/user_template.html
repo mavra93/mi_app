@@ -1,0 +1,48 @@
+<ion-view>
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-title>hello</ion-nav-title>
+  </ion-nav-bar>
+  <ion-content class="view-wrapper user">
+    <div class="user-header">
+      <div class="top-header">
+        <div class="user-header-left">
+          <img ng-src="{{userProfile.photoURL}}">
+        </div>
+        <div class="user-header-right">
+          <div class="top-data">
+            <div class="user-posts">
+              3 posts
+            </div>
+            <div class="user-pics">
+              5 pics
+            </div>
+          </div>
+          <div class="settings-button">
+            <button class="button button-outline button-positive" ui-sref="app.settings">Settings</button>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-header">
+        <h3>{{userProfile.displayName}}</h3>
+        <h4>{{userProfile.email}}</h4>
+      </div>
+    </div>
+    <div class="user-tabs">
+      <div class="tab-buttons">
+        <div class="all-posts">
+          <i class="ion-ios-paper"></i><span>Posts</span>
+        </div>
+        <div class="all-pics">
+          <i class="ion-images"></i><span>Pictures</span>
+        </div>
+      </div>
+      <div class="posts-tab">
+
+      </div>
+      <div class="pics-tab">
+
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+

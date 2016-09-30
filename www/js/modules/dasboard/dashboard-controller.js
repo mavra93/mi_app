@@ -1,13 +1,22 @@
-'use strict';
-
-angular.module('miApp').controller('DashboardCtrl', function ($scope, $state, Auth) {
-  firebase.auth().onAuthStateChanged(user => {
+"use strict";
+angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Auth) {
+  let observer = user => {
     if (user) {
-      $scope.user = user.email;
+      let userProfile = user;
+      if (!user.photoURL) {
+        let username = $state.params.username;
+        Auth.setExtraUserSettings(user, username).then(newUser => {
+          userProfile = newUser;
+        });
+      }
+      $scope.user = userProfile;
     } else {
       $state.go("login");
     }
-  });
+    unsubscribe();
+  };
+  let unsubscribe = firebase.auth().onAuthStateChanged(observer);
+
 
   $scope.logout = () => {
     Auth.logout().then(()=> {
@@ -16,5 +25,4 @@ angular.module('miApp').controller('DashboardCtrl', function ($scope, $state, Au
 
     });
   }
-
 });

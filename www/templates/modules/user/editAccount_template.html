@@ -1,0 +1,20 @@
+<ion-view>
+  <ion-content class="view-wrapper edit-account">
+    <div class="list">
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Username</span>
+        <input type="text" placeholder="Username" ng-required="true" ng-model="userProfile.displayName">
+      </label>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">Language</span>
+        <input type="text" placeholder="Language">
+      </label>
+    </div>
+    <div class="user-image">
+      <img ng-src="{{userProfile.photoURL}}">
+    </div>
+    <button class="button button-block button-positive" ng-click="uploadImage()">Change photo</button>
+    <button class="button button-block button-positive" ng-click="updateProfile()">Save account</button>
+  </ion-content>
+</ion-view>
+

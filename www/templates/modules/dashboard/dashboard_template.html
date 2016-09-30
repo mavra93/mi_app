@@ -1,10 +1,13 @@
 <ion-view>
-  <ion-content>
+  <ion-nav-bar class="bar-positive">
+    <ion-nav-title>hello</ion-nav-title>
+  </ion-nav-bar>
+  <ion-content class="view-wrapper">
     <div class="list card">
       <div class="item item-avatar">
-        <img src="">
+        <img ng-src="{{user.photoURL}}">
 
-        <h2></h2>
+        <h2>{{user.displayName}}</h2>
 
         <p></p>
       </div>
