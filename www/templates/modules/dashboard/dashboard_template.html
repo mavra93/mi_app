@@ -1,19 +1,52 @@
 <ion-view>
   <ion-nav-bar class="bar-positive">
-    <ion-nav-title>hello</ion-nav-title>
+    <ion-nav-title>Timeline</ion-nav-title>
   </ion-nav-bar>
-  <ion-content class="view-wrapper">
+  <ion-content class="view-wrapper dashboard">
     <div class="list card">
-      <div class="item item-avatar">
-        <img ng-src="{{user.photoURL}}">
-
-        <h2>{{user.displayName}}</h2>
-
-        <p></p>
-      </div>
       <div class="item item-body">
+        <div class="new-post-header">
+          <div class="user-image">
+            <img ng-src="{{user.photoURL}}">
+          </div>
+          <div class="write-something" ng-click="modal.show()">
+            <p>Write something</p>
+          </div>
 
+        </div>
+        <div class="new-post-footer">
+          <div class="status">
+            Status
+          </div>
+          <div class="select-photo">
+            Select photo
+          </div>
+          <div class="add-photo">
+            Add photo
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="posts-list-wrapper">
+      <div class="list card posts-list" ng-repeat="post in posts">
+      <div class="item item-body">
+        <div class="post-image" ng-if="post.image">
+          <img ng-src="{{post.image}}">
+        </div>
+        <div class="post-title">
+          <h2>{{post.title}}</h2>
+        </div>
+        <post-owner uid="post.uid" post-created="-(post.created)"></post-owner>
+        <div class="new-post-footer">
+          <div class="status">
+            Comment
+          </div>
+        </div>
+      </div>
+      </div>
+      <ion-infinite-scroll
+        on-infinite="loadMore()">
+      </ion-infinite-scroll>
     </div>
   </ion-content>
 </ion-view>

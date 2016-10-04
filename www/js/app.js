@@ -1,4 +1,4 @@
-angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ionic.contrib.NativeDrawer", "ngCordova"])
+angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ionic.contrib.NativeDrawer", "ngCordova", "angularMoment"])
 
   .run(function ($ionicPlatform, $rootScope, $state, $translate, localStorageService) {
     $ionicPlatform.ready(function () {
@@ -23,21 +23,11 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         }
       }, 100);
     });
-
-    // If user is logged in go to dashboard, else go to login page
-    $rootScope.$on("$stateChangeSuccess",
-      function (event, toState, toParams, fromState) {
-        let user = localStorageService.get("user");
-        if (!user && toState.name !== "signup") {
-          event.preventDefault();
-          $state.go("login");
-        } else if (user && (fromState.name === "login" || toState.name === "login")) {
-          $state.go("app.dashboard");
-        }
-      });
   })
 
-  .config(function ($stateProvider, $urlRouterProvider, $translateProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $translateProvider, $ionicConfigProvider) {
+    $ionicConfigProvider.views.forwardCache(true);
+    $ionicConfigProvider.views.maxCache(0);
     $translateProvider.useSanitizeValueStrategy("sanitizeParameters");
     $stateProvider
       .state("signup", {
@@ -55,10 +45,14 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         url: "/app",
         abstract: true,
         templateUrl: "templates/modules/sidemenu/sidemenu_template.html",
-        controller: "SidemenuCtrl"
+        controller: "SidemenuCtrl",
+        onEnter: function ($state, localStorageService) {
+          let user = localStorageService.get("user") || null;
+          if (!user) {
+            $state.go('login');
+          }
+        }
       })
-
-
       .state("app.dashboard", {
         url: "/dashboard",
         views: {
@@ -78,6 +72,9 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
             templateUrl: "templates/modules/newPost/newPost_template.html",
             controller: "NewPostCtrl"
           }
+        },
+        params: {
+          uid: null
         }
       })
       .state("app.user", {
@@ -111,5 +108,5 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         }
       });
     // if none of the above states are matched, use this as the fallback
-    $urlRouterProvider.otherwise("/login");
+    $urlRouterProvider.otherwise("/app/dashboard");
   });

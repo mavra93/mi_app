@@ -19,15 +19,22 @@
     <script src="js/app.js"></script>
 
     <!-- bower:js -->
-    <script src="lib/firebase/firebase.js"></script>
     <script src="lib/angular/angular.js"></script>
+    <script src="lib/firebase/firebase.js"></script>
     <script src="lib/angular-translate/angular-translate.js"></script>
     <script src="lib/ion-md-input/ion-md-input.js"></script>
+    <script src="lib/angular-animate/angular-animate.js"></script>
+    <script src="lib/angular-sanitize/angular-sanitize.js"></script>
+    <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="lib/waves/dist/waves.min.js"></script>
     <script src="lib/angular-local-storage/dist/angular-local-storage.js"></script>
     <script src="lib/ngCordova/dist/ng-cordova.js"></script>
+    <script src="lib/moment/moment.js"></script>
+    <script src="lib/angular-moment/angular-moment.js"></script>
     <script src="lib/angularfire/dist/angularfire.js"></script>
     <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
+    <script src="lib/ionic/js/ionic.js"></script>
+    <script src="lib/ionic/js/ionic-angular.js"></script>
     <script src="lib/ionic-material/dist/ionic.material.js"></script>
     <script src="lib/ionic-material/dist/ionic.material.min.js"></script>
     <!-- endinject -->
@@ -36,19 +43,20 @@
     <script src="cordova.js"></script>
 
     <!-- inject:js -->
+    <script src="js/common/firebase-util.min.js"></script>
     <script src="js/common/native-like-menu/NativeSideMenu.js"></script>
-    <script src="js/modules/dasboard/dashboard-controller.js"></script>
-    <script src="js/modules/dasboard/dashboard-service.js"></script>
+    <script src="js/modules/dasboard/controllers/dashboard-controller.js"></script>
+    <script src="js/modules/dasboard/directives/post-owner-dir.js"></script>
+    <script src="js/modules/dasboard/services/dashboard-service.js"></script>
+    <script src="js/modules/login/controllers/login-controller.js"></script>
+    <script src="js/modules/login/services/auth.js"></script>
+    <script src="js/modules/sidemenu/controllers/sidemenu-controller.js"></script>
+    <script src="js/modules/signup/controllers/signup-controller.js"></script>
+    <script src="js/modules/user/controllers/edit-account-controller.js"></script>
+    <script src="js/modules/user/controllers/settings-controller.js"></script>
+    <script src="js/modules/user/controllers/user-controller.js"></script>
+    <script src="js/modules/user/services/user-service.js"></script>
     <script src="js/modules/firebase_init/firebase_init.js"></script>
-    <script src="js/modules/login/auth.js"></script>
-    <script src="js/modules/login/login-controller.js"></script>
-    <script src="js/modules/sidemenu/sidemenu-controller.js"></script>
-    <script src="js/modules/newPost/newPost-controller.js"></script>
-    <script src="js/modules/signup/signup-controller.js"></script>
-    <script src="js/modules/user/edit-account-controller.js"></script>
-    <script src="js/modules/user/settings-controller.js"></script>
-    <script src="js/modules/user/user-controller.js"></script>
-    <script src="js/modules/user/user-service.js"></script>
     <script src="translations/locale-en.js"></script>
     <script src="translations/locale-hr.js"></script>
     <!-- endinject -->

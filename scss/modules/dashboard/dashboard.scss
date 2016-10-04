@@ -1,0 +1,69 @@
+.dashboard {
+  .card {
+    .item {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      .new-post-header {
+        display: flex;
+        width: 100%;
+        .user-image {
+          width: 20%;
+          padding: 3%;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+          }
+        }
+        .write-something {
+          padding: 5%;
+          width: 80%;
+        }
+      }
+      .new-post-footer {
+        height: 40px;
+        display: flex;
+        background: $light-grey;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 5%;
+        padding-left: 5%;
+      }
+    }
+  }
+  .posts-list-wrapper {
+    padding-top: 40px;
+
+    .posts-list {
+      margin-bottom: 40px;
+      border: 1px solid $light-grey;
+      .item-body {
+        .post-title {
+          padding: 3%;
+          h2 {
+            color: $grey;
+            font-size: 30px;
+          }
+
+        }
+        .post-owner {
+          display: flex;
+          padding: 3%;
+          .owner-photo {
+            img {
+              width: 50px;
+              height: 50px;
+            }
+          }
+        }
+        .post-image {
+          img {
+            height: 250px;
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}

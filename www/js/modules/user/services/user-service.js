@@ -1,13 +1,16 @@
 "use strict";
 function UserService($q, $cordovaCamera) {
+  this.user = null;
+  this.users = null;
   this.getCurrentUser = () => {
     let q = $q.defer();
-    firebase.auth().onAuthStateChanged(data => {
-      q.resolve(data)
-    });
-    return q.promise
+    let observer = user => {
+      q.resolve(user);
+      unsubscribe();
+    };
+    let unsubscribe = firebase.auth().onAuthStateChanged(observer);
+    return q.promise;
   };
-
 
   this.getProfileImage = () => {
     let q = $q.defer();
@@ -38,6 +41,25 @@ function UserService($q, $cordovaCamera) {
         path: user.photoURL
       }
     });
+  };
+
+  this.storeUsers = () => {
+    let users = [];
+    firebase.database().ref("users/").on("child_added", data => {
+      users.push(data.val());
+      this.users = users;
+    });
+  };
+
+  let postsRef = firebase.database().ref("posts/");
+  this.loadUserPosts = (user) => {
+    let posts = [];
+    let q = $q.defer();
+    postsRef.orderByChild("uid").equalTo(user.uid).on('child_added', data => {
+      posts.push(data.val());
+      q.resolve(posts);
+    });
+    return q.promise
   };
 
   this.updateProfile = (user) => {

@@ -36,8 +36,9 @@
           <i class="ion-images"></i><span>Pictures</span>
         </div>
       </div>
-      <div class="posts-tab">
-
+      <div class="posts-tab" ng-repeat="post in posts">
+        {{post.title}}
+        {{post.message}}
       </div>
       <div class="pics-tab">
 

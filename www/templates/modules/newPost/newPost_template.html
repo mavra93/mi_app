@@ -1,0 +1,51 @@
+<ion-modal-view>
+  <ion-header-bar class="bar-positive new-post-bar">
+    <div class="buttons" ng-click="modal.hide()">
+      <p>Cancel</p>
+    </div>
+    <h1 class="title">New post</h1>
+
+    <div class="buttons" ng-click="newPost()">
+      <p>Post</p>
+    </div>
+  </ion-header-bar>
+  <ion-content class="view-wrapper new-post">
+    <div class="list card">
+      <div class="item item-body">
+        <div class="new-post-header">
+          <div class="title">
+            <h3>Title:</h3>
+          </div>
+          <div class="write-something">
+            <input placeholder="Title" ng-model="post.title">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="list card">
+      <div class="item item-body">
+        <div class="new-post-header">
+          <div class="user-image">
+            <img ng-if="user" ng-src="{{user.photoURL}}">
+          </div>
+          <div class="write-something">
+            <textarea ng-model="post.message"></textarea>
+          </div>
+
+        </div>
+      </div>
+    </div>
+    <div class="photo-buttons">
+      <button class="button button-outline button-positive add-select-photo" ng-click="addImage()">
+        Add photo
+      </button>
+      <button class="button button-outline button-positive add-select-photo">
+        Select photo
+      </button>
+    </div>
+    <div class="image" ng-if="post.image">
+      <img ng-src="{{post.image}}">
+    </div>
+  </ion-content>
+</ion-modal-view>
+

@@ -1,8 +1,8 @@
 'use strict';
-angular.module('miApp').controller('LoginCtrl', function ($scope, Auth, $state, localStorageService) {
+angular.module('miApp').controller('LoginCtrl', function ($scope, $rootScope, Auth, $state, localStorageService) {
 
   $scope.user = {
-    email: localStorageService.get("email"),
+    email: localStorageService.get("email") || null,
     password: ""
   };
   $scope.remember = true;
@@ -20,5 +20,4 @@ angular.module('miApp').controller('LoginCtrl', function ($scope, Auth, $state, 
       $scope.error = error.code;
     })
   };
-
 });

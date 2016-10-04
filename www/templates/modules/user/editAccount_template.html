@@ -1,6 +1,9 @@
 <ion-view>
   <ion-content class="view-wrapper edit-account">
     <div class="list">
+      <div ng-repeat="post in posts">
+        {{post.postMessage}}
+      </div>
       <label class="item item-input item-floating-label">
         <span class="input-label">Username</span>
         <input type="text" placeholder="Username" ng-required="true" ng-model="userProfile.displayName">

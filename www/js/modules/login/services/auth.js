@@ -27,7 +27,8 @@ function Auth($q) {
       image: {
         path: defaultImage,
         name: "DefaultProfileImage.jpg"
-      }
+      },
+      uid: id
     });
   };
 
