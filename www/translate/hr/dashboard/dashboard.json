@@ -1,0 +1,11 @@
+{
+  "dashboard": {
+    "timeline": "Početna",
+    "writeSomething": "Napiši nešto",
+    "status": "Nova objava",
+    "selectPhoto": "Dodaj fotografiju",
+    "addPhoto": "Slikaj",
+    "comment": "Komentiraj",
+    "new": "Novi"
+  }
+}

@@ -1,0 +1,18 @@
+<ion-view>
+  <ion-nav-title class="nav-title">{{post.title | limitTo: 25}}</ion-nav-title>
+  <ion-content class="view-wrapper dashboard-detail">
+    <div class="header" ng-if="post.image">
+      <img ng-src="{{post.image}}">
+    </div>
+    <div class="post-title">
+      {{post.title}}
+    </div>
+    <div class="post-message">
+      {{post.message}}
+    </div>
+  </ion-content>
+  <div class="bar bar-footer dashboard-footer">
+    <div class="title">{{"dashboard.comment" | translate}}</div>
+  </div>
+</ion-view>
+

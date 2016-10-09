@@ -7,7 +7,7 @@ angular.module("miApp").directive("postOwner", (UserService) => {
     scope: {},
     bindToController: {
       uid: "<",
-      postCreated: "<"
+      created: "<"
     },
     controllerAs: "ctrl",
     controller: function () {

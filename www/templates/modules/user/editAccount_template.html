@@ -8,10 +8,16 @@
         <span class="input-label">Username</span>
         <input type="text" placeholder="Username" ng-required="true" ng-model="userProfile.displayName">
       </label>
-      <label class="item item-input item-floating-label">
-        <span class="input-label">Language</span>
-        <input type="text" placeholder="Language">
-      </label>
+      <label class="item item-input item-floating-label">Language</label>
+
+      <div class="languages-wrapper">
+        <button class="language-wrapper" ng-click="changeLanguage('en')">
+          ENG
+        </button>
+        <button class="language-wrapper" ng-click="changeLanguage('hr')">
+          HRV
+        </button>
+      </div>
     </div>
     <div class="user-image">
       <img ng-src="{{userProfile.photoURL}}">

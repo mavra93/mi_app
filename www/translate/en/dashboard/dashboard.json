@@ -1,0 +1,11 @@
+{
+  "dashboard": {
+    "timeline": "Timeline",
+    "writeSomething": "Write something",
+    "status": "Status",
+    "selectPhoto": "Select photo",
+    "addPhoto": "Add photo",
+    "comment": "Comment",
+    "new": "New"
+  }
+}

@@ -17,8 +17,12 @@
           }
         }
         .write-something {
-          padding: 5%;
-          width: 80%;
+          padding: 3%;
+          width: 100%;
+          color: $normal-grey;
+          input {
+            width: 100%;
+          }
         }
       }
       .new-post-footer {
@@ -29,6 +33,7 @@
         align-items: center;
         padding-right: 5%;
         padding-left: 5%;
+        color: $normal-grey;
       }
     }
   }
@@ -44,6 +49,11 @@
           h2 {
             color: $grey;
             font-size: 30px;
+            margin: 0;
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
 
         }
@@ -56,6 +66,15 @@
               height: 50px;
             }
           }
+          .status {
+            padding-left: 20px;
+            padding-top: 5px;
+            p {
+              margin: 0;
+              font-size: 18px;
+              font-weight: bold;
+            }
+          }
         }
         .post-image {
           img {
@@ -64,6 +83,47 @@
           }
         }
       }
+      .new-badge {
+        position: absolute;
+        background: $error-pink;
+        height: 20px;
+        z-index: 100;
+        right: 0;
+        width: 20%;
+        top: 5%;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+      }
     }
   }
+}
+
+.dashboard-detail {
+  .header {
+    img {
+      width: 100%;
+    }
+  }
+  .post-title {
+    min-height: 50px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    padding-left: 20px;
+    color: $normal-grey;
+    border-bottom: 1px solid $light-grey;
+    font-size: 18px;
+  }
+  .post-message {
+    padding: 20px;
+    color: $grey;
+    font-size: 14px;
+  }
+}
+
+.dashboard-footer {
+  background: $light-grey;
+  color: $normal-grey;
 }

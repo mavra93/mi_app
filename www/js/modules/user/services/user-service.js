@@ -1,5 +1,5 @@
 "use strict";
-function UserService($q, $cordovaCamera) {
+function UserService($q, $cordovaCamera, $translate, localStorageService) {
   this.user = null;
   this.users = null;
   this.getCurrentUser = () => {
@@ -80,6 +80,11 @@ function UserService($q, $cordovaCamera) {
       q.reject(error);
     });
     return q.promise
-  }
+  };
+
+  this.setLanguage = (language) => {
+    $translate.use(language);
+    localStorageService.set("language", language);
+  };
 }
 angular.module("miApp").service("UserService", UserService);

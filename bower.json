@@ -15,6 +15,8 @@
     "angular-local-storage": "^0.5.1",
     "ngCordova": "^0.1.27-alpha",
     "moment": "^2.15.1",
-    "angular-moment": "^0.10.3"
+    "angular-moment": "1.0.0-beta.6",
+    "ionic-native-transitions": "shprink/ionic-native-transitions#^1.0.2",
+    "ionic-scroll-sista": "^1.0.7"
   }
 }

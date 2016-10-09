@@ -1,6 +1,6 @@
-angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ionic.contrib.NativeDrawer", "ngCordova", "angularMoment"])
+angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ngCordova", "angularMoment", "ionic.contrib.NativeDrawer", "ionic-native-transitions", "jett.ionic.scroll.sista"])
 
-  .run(function ($ionicPlatform, $rootScope, $state, $translate, localStorageService) {
+  .run(function ($ionicPlatform, $rootScope, $state, $translate, amMoment) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -29,27 +29,39 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
     $ionicConfigProvider.views.forwardCache(true);
     $ionicConfigProvider.views.maxCache(0);
     $translateProvider.useSanitizeValueStrategy("sanitizeParameters");
+    $ionicConfigProvider.scrolling.jsScrolling(false);
     $stateProvider
       .state("signup", {
         url: "/signup",
         templateUrl: "templates/modules/signup/signup_template.html",
-        controller: "SignupCtrl"
+        controller: "SignupCtrl",
+        nativeTransitionsAndroid: {
+          "type": "slide",
+          "direction": "right"
+        }
       })
 
       .state("login", {
         url: "/login",
         templateUrl: "templates/modules/login/login_template.html",
-        controller: "LoginCtrl"
+        controller: "LoginCtrl",
+        nativeTransitionsAndroid: {
+          "type": "slide",
+          "direction": "right"
+        }
       })
       .state("app", {
         url: "/app",
         abstract: true,
         templateUrl: "templates/modules/sidemenu/sidemenu_template.html",
         controller: "SidemenuCtrl",
-        onEnter: function ($state, localStorageService) {
+        onEnter: function ($state, localStorageService, UserService) {
+          let language = localStorageService.get("language");
           let user = localStorageService.get("user") || null;
           if (!user) {
             $state.go('login');
+          } else {
+            UserService.setLanguage(language);
           }
         }
       })
@@ -65,6 +77,22 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           username: null
         }
       })
+      .state("app.dashboardDetail", {
+        url: "/dashboardDetail",
+        views: {
+          menuContent: {
+            templateUrl: "templates/modules/dashboard/dashboardDetail_template.html",
+            controller: "DashboardDetailCtrl"
+          }
+        },
+        params: {
+          post: null
+        },
+        nativeTransitionsAndroid: {
+          "type": "slide",
+          "direction": "right"
+        }
+      })
       .state("app.newPost", {
         url: "/newPost",
         views: {
@@ -75,6 +103,10 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         },
         params: {
           uid: null
+        },
+        nativeTransitionsAndroid: {
+          "type": "slide",
+          "direction": "up"
         }
       })
       .state("app.user", {
@@ -85,8 +117,24 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
             controller: "UserCtrl"
           }
         },
+        resolve: {
+          userData: (UserService) => {
+            return UserService.getCurrentUser().then(user => {
+              return user;
+            }, err => {
+              throw new Error(err);
+            });
+          },
+          newUserDara: ($state) => {
+            return $state.params.user;
+          }
+        },
         params: {
           user: null
+        },
+        nativeTransitionsAndroid: {
+          "type": "slide",
+          "direction": "right"
         }
       })
       .state("app.settings", {
@@ -96,6 +144,10 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
             templateUrl: "templates/modules/user/settings_template.html",
             controller: "SettingsCtrl"
           }
+        },
+        nativeTransitionsAndroid: {
+          "type": "slide",
+          "direction": "right"
         }
       })
       .state("app.editAccount", {
@@ -105,6 +157,10 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
             templateUrl: "templates/modules/user/editAccount_template.html",
             controller: "EditAccountCtrl"
           }
+        },
+        nativeTransitionsAndroid: {
+          "type": "slide",
+          "direction": "right"
         }
       });
     // if none of the above states are matched, use this as the fallback

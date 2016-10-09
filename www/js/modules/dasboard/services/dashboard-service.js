@@ -15,11 +15,11 @@ function DashboardService($q, $cordovaCamera) {
     return q.promise
   };
 
-  this.addImage = () => {
+  this.addImage = (type) => {
     let q = $q.defer();
     let options = {
       quality: 75,
-      destinationType: Camera.DestinationType.DATA_URL,
+      destinationType: Camera.DestinationType[type],
       sourceType: Camera.PictureSourceType.CAMERA,
       allowEdit: true,
       correctOrientation: true,

@@ -9,3 +9,32 @@
 .view-wrapper {
   background-color: $background;
 }
+
+.mi-bar {
+  display: flex;
+  align-items: center;
+  .mi-bar-title {
+    font-size: 20px;
+    margin: 0;
+    color: white;
+    width: 50%;
+    text-align: center;
+  }
+  .buttons {
+    width: 25%;
+    text-align: center;
+    p {
+      margin: 0;
+      width: 100%;
+    }
+  }
+}
+
+.pane {
+  background: transparent;
+}
+
+.platform-android .bar .title {
+  text-align: center;
+}
+

@@ -6,17 +6,29 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
   let postsRef = firebase.database().ref("posts/");
   var scrollRef = new firebase.util.Scroll(postsRef, "created");
   scrollRef.on("child_added", posts => {
+    let post = posts.val();
+    $scope.hasMoreData = true;
+    let currentDateTime = moment().unix();
+    let postCreated = post.created * (-1);
     if (newPost) {
-      $scope.posts.unshift(posts.val());
+      $scope.posts.unshift(post);
+    } else if (!newPost && (postCreated - currentDateTime < 20) && (postCreated - currentDateTime) > 0) {
+      post.new = true;
+      $scope.posts.unshift(post);
     } else {
-      $scope.posts.push(posts.val());
+      $scope.posts.push(post);
     }
-    $scope.$applyAsync();
     $scope.$broadcast("scroll.infiniteScrollComplete");
+    $scope.$applyAsync();
     newPost = false;
   });
 
   $scope.loadMore = () => {
+    if ($scope.posts.length < 1) {
+      $scope.hasMoreData = true;
+    } else {
+      $scope.hasMoreData = false;
+    }
     scrollRef.scroll.next(4);
   };
 
@@ -41,11 +53,19 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
     }
   });
 
+  $scope.postDetails = (post) => {
+    $state.go("app.dashboardDetail", {post: post});
+  };
 
   $scope.loadPosts = () => {
     DashboardService.loadPosts().then(posts => {
       $scope.posts = posts;
     })
+  };
+
+  $scope.newImagePost = (type) => {
+    $scope.modal.show();
+    $scope.addImage(type)
   };
 
   //Method that open modal with new post form
@@ -60,8 +80,8 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
       image: ""
 
     };
-    $scope.addImage = () => {
-      DashboardService.addImage().then(image => {
+    $scope.addImage = (type) => {
+      DashboardService.addImage(type).then(image => {
         $scope.post.image = image;
       })
     };
@@ -73,4 +93,6 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
       })
     }
   });
+
+  $scope.loadMore();
 });

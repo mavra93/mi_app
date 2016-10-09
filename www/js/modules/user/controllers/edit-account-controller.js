@@ -20,4 +20,8 @@ angular.module("miApp").controller("EditAccountCtrl", function ($scope, UserServ
     })
   };
 
+  $scope.changeLanguage = (language) => {
+    UserService.setLanguage(language);
+  }
+
 });

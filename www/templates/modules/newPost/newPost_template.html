@@ -1,9 +1,9 @@
 <ion-modal-view>
-  <ion-header-bar class="bar-positive new-post-bar">
+  <ion-header-bar class="bar-positive mi-bar">
     <div class="buttons" ng-click="modal.hide()">
       <p>Cancel</p>
     </div>
-    <h1 class="title">New post</h1>
+    <h1 class="mi-bar-title">New post</h1>
 
     <div class="buttons" ng-click="newPost()">
       <p>Post</p>
@@ -13,9 +13,6 @@
     <div class="list card">
       <div class="item item-body">
         <div class="new-post-header">
-          <div class="title">
-            <h3>Title:</h3>
-          </div>
           <div class="write-something">
             <input placeholder="Title" ng-model="post.title">
           </div>
@@ -36,10 +33,10 @@
       </div>
     </div>
     <div class="photo-buttons">
-      <button class="button button-outline button-positive add-select-photo" ng-click="addImage()">
+      <button class="button button-outline button-positive add-select-photo" ng-click="addImage('DATA_URL')">
         Add photo
       </button>
-      <button class="button button-outline button-positive add-select-photo">
+      <button class="button button-outline button-positive add-select-photo" ng-click="addImage('FILE_URL')">
         Select photo
       </button>
     </div>
