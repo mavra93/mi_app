@@ -117,7 +117,7 @@
     font-size: 18px;
   }
   .post-message {
-    padding: 20px;
+    padding: 20px 20px 60px 20px;
     color: $grey;
     font-size: 14px;
   }
@@ -127,3 +127,90 @@
   background: $light-grey;
   color: $normal-grey;
 }
+
+.comment-modal {
+  h4 {
+    text-align: center;
+    color: $grey;
+  }
+  .mi-bar {
+    .buttons {
+      font-size: 18px;
+      padding-left: 10px;
+    }
+  }
+  .comment-wrapper {
+    padding-bottom: 50px;
+    padding-top: 20px;
+    li {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border: 1px solid $light-grey;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .post-owner {
+      width: 100%;
+      display: flex;
+      .owner-photo {
+        width: 20%;
+        img {
+          border-radius: 6px;
+          width: 50px;
+          height: 50px;
+        }
+      }
+      .status {
+        width: 80%;
+        border-bottom: 1px solid $light-grey;
+        display: flex;
+        align-items: center;
+        color: $normal-grey;
+        p {
+          width: 50%;
+          font-weight: bold;
+          border-right: 1px solid $light-grey;
+          margin: 0;
+        }
+        span {
+          text-align: right;
+          width: 50%;
+        }
+      }
+    }
+    .comment-message {
+      padding: 20px 0 0 20%;
+    }
+  }
+  .bar {
+    border-top: 1px solid $light-grey;
+    form {
+      width: 100%;
+      display: flex;
+      input {
+        padding-top: 10px;
+        padding-left: 20px;
+        width: 80%;
+      }
+      button {
+        width: 20%;
+        background: transparent;
+        border: none;
+        font-size: 28px;
+        color: $light-blue;
+      }
+    }
+  }
+}
+
+.mi-bar {
+  .post-button {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    color: white;
+  }
+}
+
+

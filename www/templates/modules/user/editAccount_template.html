@@ -5,25 +5,28 @@
         {{post.postMessage}}
       </div>
       <label class="item item-input item-floating-label">
-        <span class="input-label">Username</span>
-        <input type="text" placeholder="Username" ng-required="true" ng-model="userProfile.displayName">
+        <span class="input-label">{{"user.username" | translate}}</span>
+        <input type="text" placeholder="{{'user.username' | translate}}" ng-required="true"
+               ng-model="userProfile.displayName">
       </label>
-      <label class="item item-input item-floating-label">Language</label>
+      <label class="item item-input">{{"user.language" | translate}}</label>
 
       <div class="languages-wrapper">
-        <button class="language-wrapper" ng-click="changeLanguage('en')">
-          ENG
+        <button class="language-wrapper" ng-click="changeLanguage('en')" ng-class="{'active': language === 'en'}">
+          {{"user.eng" | translate}}
         </button>
-        <button class="language-wrapper" ng-click="changeLanguage('hr')">
-          HRV
+        <button class="language-wrapper" ng-click="changeLanguage('hr')" ng-class="{'active': language === 'hr'}">
+          {{"user.hrv" | translate}}
         </button>
       </div>
     </div>
     <div class="user-image">
       <img ng-src="{{userProfile.photoURL}}">
     </div>
-    <button class="button button-block button-positive" ng-click="uploadImage()">Change photo</button>
-    <button class="button button-block button-positive" ng-click="updateProfile()">Save account</button>
+    <button class="button button-block button-positive" ng-click="uploadImage()">{{"user.changePhoto" | translate}}
+    </button>
+    <button class="button button-block button-positive" ng-click="updateProfile()">{{"user.saveAccount" | translate}}
+    </button>
   </ion-content>
 </ion-view>
 

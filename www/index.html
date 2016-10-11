@@ -32,7 +32,6 @@
     <script src="lib/moment/moment.js"></script>
     <script src="lib/angular-moment/angular-moment.js"></script>
     <script src="lib/ionic-native-transitions/dist/ionic-native-transitions.js"></script>
-    <script src="lib/angular-dynamic-locale/src/tmhDynamicLocale.js"></script>
     <script src="lib/ionic-scroll-sista/dist/ionic.scroll.sista.js"></script>
     <script src="lib/angularfire/dist/angularfire.js"></script>
     <script src="lib/angular-translate-loader-static-files/angular-translate-loader-static-files.js"></script>
@@ -42,6 +41,8 @@
     <script src="lib/ionic-material/dist/ionic.material.min.js"></script>
     <!-- endinject -->
 
+    <!-- Locales -->
+    <script src="lib/moment/locale/hr.js"></script>
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
@@ -51,15 +52,15 @@
     <script src="js/modules/dasboard/controllers/dashboard-controller.js"></script>
     <script src="js/modules/dasboard/controllers/dashboard-detail-controller.js"></script>
     <script src="js/modules/dasboard/directives/post-owner-dir.js"></script>
-    <script src="js/modules/login/controllers/login-controller.js"></script>
     <script src="js/modules/dasboard/services/dashboard-service.js"></script>
+    <script src="js/modules/login/controllers/login-controller.js"></script>
     <script src="js/modules/login/services/auth.js"></script>
     <script src="js/modules/sidemenu/controllers/sidemenu-controller.js"></script>
+    <script src="js/modules/signup/controllers/signup-controller.js"></script>
     <script src="js/modules/user/controllers/edit-account-controller.js"></script>
     <script src="js/modules/user/controllers/settings-controller.js"></script>
     <script src="js/modules/user/controllers/user-controller.js"></script>
     <script src="js/modules/user/services/user-service.js"></script>
-    <script src="js/modules/signup/controllers/signup-controller.js"></script>
     <script src="js/modules/firebase_init/firebase_init.js"></script>
     <script src="translations/locale-en.js"></script>
     <script src="translations/locale-hr.js"></script>
@@ -69,4 +70,5 @@
   <body ng-app="miApp">
     <ion-nav-view></ion-nav-view>
   </body>
+
 </html>

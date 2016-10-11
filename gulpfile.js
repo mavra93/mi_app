@@ -32,7 +32,7 @@ var paths = {
   ]
 };
 
-gulp.task('default', ['sass', "bower"]);
+gulp.task("default", ["sass", "bower"]);
 
 
 gulp.task('scss', function () {
@@ -64,7 +64,7 @@ gulp.task('sass', ['scss'], function (done) {
     .on('end', done);
 });
 
-gulp.task('index', function(){
+gulp.task("index", ["translate"], function () {
   return gulp.src('./www/index.html')
     .pipe(inject(
       gulp.src(paths.javascript,
@@ -86,7 +86,7 @@ gulp.task('watch', function() {
   gulp.watch("./scss/!**!/!*.scss'", ['scss']);
 });
 
-gulp.task('bower', ["translate", "index"], function () {
+gulp.task("bower", ["index"], function () {
   gulp.src('./www/index.html')
     .pipe(inject(gulp.src(bowerFiles({
       paths: {

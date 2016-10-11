@@ -1,11 +1,8 @@
 "use strict";
-angular.module("miApp").controller("EditAccountCtrl", function ($scope, UserService, $state) {
+angular.module("miApp").controller("EditAccountCtrl", function ($scope, UserService, $state, userData) {
+  $scope.language = UserService.getLanguage();
   $scope.posts = [];
-  UserService.getCurrentUser().then(user => {
-    $scope.userProfile = angular.copy(user);
-  }).catch(err => {
-
-  });
+  $scope.userProfile = angular.copy(userData);
   $scope.updateProfile = () => {
     UserService.updateProfile($scope.userProfile).then(() => {
       UserService.setUser($scope.userProfile);
@@ -21,6 +18,7 @@ angular.module("miApp").controller("EditAccountCtrl", function ($scope, UserServ
   };
 
   $scope.changeLanguage = (language) => {
+    $scope.language = language;
     UserService.setLanguage(language);
   }
 

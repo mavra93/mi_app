@@ -37,5 +37,19 @@ function DashboardService($q, $cordovaCamera) {
     return q.promise
   };
 
+  this.newComment = (postId, uid, comment) => {
+    let commentsRef = firebase.database().ref("posts/" + postId + "/comments");
+    let q = $q.defer();
+    commentsRef.push({
+      message: comment.message,
+      uid: uid,
+      created: -(moment().unix())
+    }).then(data => {
+      q.resolve(data);
+    });
+    return q.promise
+  };
+
+
 }
 angular.module("miApp").service("DashboardService", DashboardService);

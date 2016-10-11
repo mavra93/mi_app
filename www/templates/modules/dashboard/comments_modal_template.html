@@ -1,0 +1,29 @@
+<ion-modal-view class="comment-modal">
+  <ion-header-bar class="bar-positive mi-bar">
+    <div class="buttons" ng-click="commentsModal.hide()">
+      <i class="ion-ios-close-outline"></i>
+    </div>
+    <h1 class="mi-bar-title">{{"dashboard.comments" | translate}} ({{comments.length}})</h1>
+  </ion-header-bar>
+  <ion-content class="view-wrapper new-post">
+    <h4 ng-if="comments.length < 1">{{"dashboard.commentsDescription" | translate}}</h4>
+    <ul class="comment-wrapper">
+      <li ng-repeat="comment in comments">
+        <post-owner uid="comment.uid" created="comment.created"></post-owner>
+        <div class="comment-message">
+          <p>{{comment.message}}</p>
+        </div>
+      </li>
+    </ul>
+  </ion-content>
+  <div class="bar bar-footer">
+    <form name="addComment">
+      <input type="text" name="comment" placeholder="{{'dashboard.writeComment' | translate}}"
+             ng-model="comment.message" ng-required="true">
+      <button ng-click="newComment()" ng-disabled="!addComment.$dirty || !addComment.$valid"><i
+        class="ion-android-send"></i></button>
+    </form>
+
+  </div>
+</ion-modal-view>
+

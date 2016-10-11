@@ -1,10 +1,12 @@
 'use strict';
-angular.module('miApp').controller('LoginCtrl', function ($scope, $rootScope, Auth, $state, localStorageService) {
+angular.module('miApp').controller('LoginCtrl', function ($scope, $rootScope, Auth, $state, localStorageService, UserService) {
 
   $scope.user = {
     email: localStorageService.get("email") || null,
     password: ""
   };
+  let language = localStorageService.get("language");
+  UserService.setLanguage(language);
   $scope.remember = true;
   $scope.login = () => {
     $scope.error = null;

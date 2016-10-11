@@ -5,14 +5,16 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
   let newPost = false;
   let postsRef = firebase.database().ref("posts/");
   var scrollRef = new firebase.util.Scroll(postsRef, "created");
+  //new post added
   scrollRef.on("child_added", posts => {
     let post = posts.val();
     $scope.hasMoreData = true;
     let currentDateTime = moment().unix();
     let postCreated = post.created * (-1);
+    post.id = posts.key;
     if (newPost) {
       $scope.posts.unshift(post);
-    } else if (!newPost && (postCreated - currentDateTime < 20) && (postCreated - currentDateTime) > 0) {
+    } else if (!newPost && currentDateTime === postCreated) {
       post.new = true;
       $scope.posts.unshift(post);
     } else {
@@ -23,6 +25,8 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
     newPost = false;
   });
 
+
+  //Load 4 more posts
   $scope.loadMore = () => {
     if ($scope.posts.length < 1) {
       $scope.hasMoreData = true;
@@ -53,16 +57,12 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
     }
   });
 
+  //View post details
   $scope.postDetails = (post) => {
     $state.go("app.dashboardDetail", {post: post});
   };
 
-  $scope.loadPosts = () => {
-    DashboardService.loadPosts().then(posts => {
-      $scope.posts = posts;
-    })
-  };
-
+  //Post image directly from dashboard
   $scope.newImagePost = (type) => {
     $scope.modal.show();
     $scope.addImage(type)
@@ -94,5 +94,34 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
     }
   });
 
+  //Comments modal
+  $ionicModal.fromTemplateUrl("templates/modules/dashboard/comments_modal_template.html", {
+    scope: $scope
+  }).then(modal => {
+    $scope.commentsModal = modal;
+    $scope.openCommentModal = (id) => {
+      $scope.comments = [];
+      $scope.commentsModal.show();
+      $scope.postId = id;
+      let postsRef = firebase.database().ref("posts/" + id + "/comments");
+
+      //Watch if any new comment added
+      postsRef.on("child_added", data => {
+        $scope.comments.push(data.val());
+      });
+
+      $scope.comment = {
+        message: ""
+      };
+      //Add new comment
+      $scope.newComment = () => {
+        DashboardService.newComment($scope.postId, $scope.user.uid, $scope.comment).then(data => {
+          $scope.comment.message = "";
+        });
+      }
+    }
+  });
+
+  //Load 4 posts on start
   $scope.loadMore();
 });

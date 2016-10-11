@@ -6,6 +6,13 @@
     "selectPhoto": "Dodaj fotografiju",
     "addPhoto": "Slikaj",
     "comment": "Komentiraj",
-    "new": "Novi"
+    "new": "Novi",
+    "comments": "Komentari",
+    "commentsDescription": "Još nema komentara. Budi prvi koji će komentirati",
+    "writeComment": "Napišite komentar",
+    "post": "Objavi",
+    "cancel": "Otkaži",
+    "title": "Naslov",
+    "newPost": "Nova objava"
   }
 }

@@ -1,6 +1,6 @@
 angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ngCordova", "angularMoment", "ionic.contrib.NativeDrawer", "ionic-native-transitions", "jett.ionic.scroll.sista"])
 
-  .run(function ($ionicPlatform, $rootScope, $state, $translate, amMoment) {
+  .run(function ($ionicPlatform, $rootScope, $state) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -13,8 +13,14 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
-      $translate.use("hr");
-      $ionicPlatform.registerBackButtonAction(function (event) {
+      $rootScope.transitions = {};
+      $rootScope.$on("$stateChangeSuccess", function (event, to, toParams, from, fromParams) {
+        if (from.name !== "login") {
+          $rootScope.transitions[to.name] = {"name": from.name, "params": fromParams};
+        }
+      });
+
+      $ionicPlatform.registerBackButtonAction(() => {
         if ($state.current.name == "login") {
           navigator.app.exitApp();
         }
@@ -36,8 +42,7 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         templateUrl: "templates/modules/signup/signup_template.html",
         controller: "SignupCtrl",
         nativeTransitionsAndroid: {
-          "type": "slide",
-          "direction": "right"
+          "type": "fade"
         }
       })
 
@@ -46,8 +51,7 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         templateUrl: "templates/modules/login/login_template.html",
         controller: "LoginCtrl",
         nativeTransitionsAndroid: {
-          "type": "slide",
-          "direction": "right"
+          "type": "fade"
         }
       })
       .state("app", {
@@ -78,7 +82,7 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         }
       })
       .state("app.dashboardDetail", {
-        url: "/dashboardDetail",
+        url: "/dashboardDetail/:postId",
         views: {
           menuContent: {
             templateUrl: "templates/modules/dashboard/dashboardDetail_template.html",
@@ -89,8 +93,7 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           post: null
         },
         nativeTransitionsAndroid: {
-          "type": "slide",
-          "direction": "right"
+          "type": "fade"
         }
       })
       .state("app.newPost", {
@@ -105,8 +108,7 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           uid: null
         },
         nativeTransitionsAndroid: {
-          "type": "slide",
-          "direction": "up"
+          "type": "fade"
         }
       })
       .state("app.user", {
@@ -124,17 +126,13 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
             }, err => {
               throw new Error(err);
             });
-          },
-          newUserDara: ($state) => {
-            return $state.params.user;
           }
         },
         params: {
           user: null
         },
         nativeTransitionsAndroid: {
-          "type": "slide",
-          "direction": "right"
+          "type": "fade"
         }
       })
       .state("app.settings", {
@@ -146,8 +144,7 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           }
         },
         nativeTransitionsAndroid: {
-          "type": "slide",
-          "direction": "right"
+          "type": "fade"
         }
       })
       .state("app.editAccount", {
@@ -158,9 +155,17 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
             controller: "EditAccountCtrl"
           }
         },
+        resolve: {
+          userData: (UserService) => {
+            return UserService.getCurrentUser().then(user => {
+              return user;
+            }, err => {
+              throw new Error(err);
+            });
+          }
+        },
         nativeTransitionsAndroid: {
-          "type": "slide",
-          "direction": "right"
+          "type": "fade"
         }
       });
     // if none of the above states are matched, use this as the fallback

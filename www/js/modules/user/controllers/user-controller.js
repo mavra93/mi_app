@@ -1,8 +1,8 @@
 "use strict";
-angular.module("miApp").controller("UserCtrl", function ($scope, UserService, $state, userData, newUserDara) {
+angular.module("miApp").controller("UserCtrl", function ($scope, UserService, $state, userData) {
   $scope.tab = 1;
-  if (newUserDara) {
-    $scope.userProfile = newUserDara;
+  if ($state.params.user) {
+    $scope.userProfile = $state.params.user;
   } else {
     $scope.userProfile = userData;
   }
@@ -12,5 +12,10 @@ angular.module("miApp").controller("UserCtrl", function ($scope, UserService, $s
 
   $scope.changeTab = (tab) => {
     $scope.tab = tab;
-  }
+  };
+
+  $scope.postDetails = (post) => {
+    $state.go("app.dashboardDetail", {post: post});
+  };
+
 });
