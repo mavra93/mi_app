@@ -17,6 +17,7 @@ angular.module('miApp').controller('LoginCtrl', function ($scope, $rootScope, Au
         localStorageService.set("email", "");
       }
       localStorageService.set("user", "logged_into");
+      UserService.storeUsers();
       $state.go("app.dashboard");
     }).catch(error => {
       $scope.error = error.code;

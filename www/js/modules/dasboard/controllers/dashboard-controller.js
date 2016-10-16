@@ -1,7 +1,9 @@
 "use strict";
-angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Auth, UserService, DashboardService, $ionicModal) {
+angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Auth, UserService, DashboardService, $ionicModal, $ionicScrollDelegate) {
+
   $scope.users = UserService.users;
   $scope.posts = [];
+
   let newPost = false;
   let postsRef = firebase.database().ref("posts/");
   var scrollRef = new firebase.util.Scroll(postsRef, "created");
@@ -12,14 +14,20 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
     let currentDateTime = moment().unix();
     let postCreated = post.created * (-1);
     post.id = posts.key;
+    if (post.comments) {
+      post.commentsLength = Object.keys(post.comments).length;
+    } else {
+      post.commentsLength = null;
+    }
     if (newPost) {
       $scope.posts.unshift(post);
-    } else if (!newPost && currentDateTime === postCreated) {
+    } else if (!newPost && (currentDateTime - postCreated) < 20) {
       post.new = true;
       $scope.posts.unshift(post);
     } else {
       $scope.posts.push(post);
     }
+
     $scope.$broadcast("scroll.infiniteScrollComplete");
     $scope.$applyAsync();
     newPost = false;
@@ -33,7 +41,7 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
     } else {
       $scope.hasMoreData = false;
     }
-    scrollRef.scroll.next(4);
+    scrollRef.scroll.next(8);
   };
 
   $scope.getPostOwner = (users, uid) => {
@@ -57,70 +65,114 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
     }
   });
 
-  //View post details
-  $scope.postDetails = (post) => {
-    $state.go("app.dashboardDetail", {post: post});
-  };
-
   //Post image directly from dashboard
   $scope.newImagePost = (type) => {
-    $scope.modal.show();
+    $scope.newPostModal.show();
     $scope.addImage(type)
   };
 
-  //Method that open modal with new post form
-  $ionicModal.fromTemplateUrl("templates/modules/newPost/newPost_template.html", {
-    scope: $scope
-  }).then(modal => {
-    $scope.modal = modal;
 
-    $scope.post = {
-      title: "",
-      message: "",
-      image: ""
+  /**
+   New post modal
+   */
 
-    };
-    $scope.addImage = (type) => {
-      DashboardService.addImage(type).then(image => {
-        $scope.post.image = image;
-      })
-    };
+  $scope.openNewPostModal = () => {
+    $ionicModal.fromTemplateUrl("templates/modules/newPost/newPost_template.html", {
+      scope: $scope,
+      animation: "no-animation"
+    }).then(modal => {
+      $scope.newPostModal = modal;
+      modal.show();
 
-    $scope.newPost = () => {
-      newPost = true;
-      DashboardService.newPost($scope.post, $scope.user.uid).then(()=> {
-        $scope.modal.hide();
-      })
-    }
-  });
+      $scope.addImage = (type) => {
+        $scope.postButtonDisabled = true;
+        DashboardService.addImage(type).then(image => {
+          $scope.postButtonDisabled = false;
+          $scope.newPost.image = image;
+        })
+      };
 
-  //Comments modal
-  $ionicModal.fromTemplateUrl("templates/modules/dashboard/comments_modal_template.html", {
-    scope: $scope
-  }).then(modal => {
-    $scope.commentsModal = modal;
-    $scope.openCommentModal = (id) => {
-      $scope.comments = [];
-      $scope.commentsModal.show();
-      $scope.postId = id;
-      let postsRef = firebase.database().ref("posts/" + id + "/comments");
+      $scope.addNewPost = (post) => {
+        let newPostObject = {
+          title: post.title,
+          message: post.message,
+          image: post.image
+        };
+        newPost = true;
+        DashboardService.newPost(newPostObject, $scope.user.uid).then(()=> {
+          $scope.newPostModal.remove();
+          post.title = post.message = post.image = undefined;
+        });
+      };
+    });
+  };
 
-      //Watch if any new comment added
-      postsRef.on("child_added", data => {
-        $scope.comments.push(data.val());
-      });
 
+  /**
+   Comments modal
+   */
+
+  $scope.openCommentModal = (post) => {
+    $ionicModal.fromTemplateUrl("templates/modules/dashboard/comments_modal_template.html", {
+      scope: $scope,
+      animation: "no-animation"
+    }).then(modal => {
+      let newComment = false;
       $scope.comment = {
         message: ""
       };
+      let scrollBottom = () => {
+        // Scroll to the bottom
+        $ionicScrollDelegate.$getByHandle("modalContent").scrollBottom();
+      };
+
+      $scope.commentsModal = modal;
+      let postsRef = firebase.database().ref("posts/" + post.id + "/comments");
+      $scope.comments = [];
+      $scope.commentsModal.show();
+      $scope.postId = post.id;
+
+      //Watch if any new comment added
+      postsRef.on("child_added", data => {
+        let comment = data.val();
+        if ($scope.comments.length > 1) {
+          if ($scope.comments[$scope.comments.length - 1].message !== comment.message || $scope.comments[$scope.comments.length - 1].created !== comment.created) {
+            $scope.comments.push(comment);
+          }
+        } else {
+          $scope.comments.push(comment);
+        }
+        if (newComment) {
+          post.commentsLength++;
+        }
+        $scope.$applyAsync();
+        scrollBottom();
+        });
+
       //Add new comment
       $scope.newComment = () => {
-        DashboardService.newComment($scope.postId, $scope.user.uid, $scope.comment).then(data => {
-          $scope.comment.message = "";
-        });
-      }
-    }
-  });
+        newComment = true;
+        DashboardService.newComment($scope.postId, $scope.user.uid, $scope.comment);
+        $scope.comment.message = "";
+      };
+    });
+  };
+
+  /**
+   Post details modal
+   */
+
+  $scope.openPostDetails = (post) => {
+    $ionicModal.fromTemplateUrl("templates/modules/dashboard/dashboardDetail_template.html", {
+      scope: $scope,
+      animation: "no-animation"
+    }).then(modal => {
+      $scope.postDetailsModal = modal;
+
+      $scope.post = post;
+      $scope.postDetailsModal.show();
+    })
+  };
 
   //Load 4 posts on start
   $scope.loadMore();

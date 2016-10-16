@@ -81,21 +81,6 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           username: null
         }
       })
-      .state("app.dashboardDetail", {
-        url: "/dashboardDetail/:postId",
-        views: {
-          menuContent: {
-            templateUrl: "templates/modules/dashboard/dashboardDetail_template.html",
-            controller: "DashboardDetailCtrl"
-          }
-        },
-        params: {
-          post: null
-        },
-        nativeTransitionsAndroid: {
-          "type": "fade"
-        }
-      })
       .state("app.newPost", {
         url: "/newPost",
         views: {

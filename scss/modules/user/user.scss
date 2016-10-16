@@ -59,6 +59,7 @@
   .user-tabs {
     padding-bottom: 50px;
     .posts-tab {
+      border: 1px solid $light-grey;
       .item-body {
         .post-title {
           h2 {
@@ -105,7 +106,6 @@
     }
   }
   .button-block {
-    margin: 10px;
     background: $light-blue;
   }
 }

@@ -1,5 +1,6 @@
 .dashboard {
   .card {
+    border: 1px solid $light-grey;
     .item {
       display: flex;
       flex-direction: column;
@@ -100,6 +101,13 @@
 }
 
 .dashboard-detail {
+  .mi-bar {
+    .buttons {
+      width: 25%;
+      padding-left: 20px;
+      font-size: 30px;
+    }
+  }
   .header {
     img {
       width: 100%;
@@ -112,13 +120,30 @@
     align-items: center;
     text-align: left;
     padding-left: 20px;
+    padding-right: 20px;
     color: $normal-grey;
     border-bottom: 1px solid $light-grey;
     font-size: 18px;
+    justify-content: space-between;
+    p {
+      margin: 0;
+      width: 50%;
+      &:first-child {
+        white-space: nowrap;
+        width: 50%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        border-right: 1px solid $light-grey;
+      }
+      &:last-child {
+        text-align: right;
+        font-size: 14px;
+      }
+    }
   }
   .post-message {
     padding: 20px 20px 60px 20px;
-    color: $grey;
+    color: black;
     font-size: 14px;
   }
 }
@@ -129,14 +154,17 @@
 }
 
 .comment-modal {
+  display: flex;
+  justify-content: center;
   h4 {
     text-align: center;
     color: $grey;
   }
   .mi-bar {
     .buttons {
-      font-size: 18px;
-      padding-left: 10px;
+      width: 25%;
+      padding-left: 20px;
+      font-size: 30px;
     }
   }
   .comment-wrapper {

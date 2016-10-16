@@ -55,10 +55,19 @@ function UserService($q, $cordovaCamera, $translate, localStorageService, amMome
   let postsRef = firebase.database().ref("posts/");
   this.loadUserPosts = (user) => {
     let posts = [];
+    let images = [];
     let q = $q.defer();
     postsRef.orderByChild("uid").equalTo(user.uid).on('child_added', data => {
-      posts.push(data.val());
-      q.resolve(posts);
+      let post = data.val();
+      if (post.image) {
+        images.push(post.image)
+      }
+      posts.push(post);
+      let returnData = {
+        posts: posts,
+        images: images
+      };
+      q.resolve(returnData);
     });
     return q.promise
   };

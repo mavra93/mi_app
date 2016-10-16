@@ -12,7 +12,7 @@
               {{posts.length}} {{"user.posts" | translate}}
             </div>
             <div class="user-pics">
-              5 {{"user.pics" | translate}}
+              {{images.length}} {{"user.pics" | translate}}
             </div>
           </div>
         </div>
@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="user-tabs" ng-if="tab === 1">
-      <div class="posts-tab list card posts-list" ng-repeat="post in posts" ng-click="postDetails(post)">
+      <div class="posts-tab list card posts-list" ng-repeat="post in posts" ng-click="openPostDetails(post)">
         <div class="item item-body">
           <div class="post-title">
             <h2>{{post.title}}</h2>
@@ -36,10 +36,19 @@
         </div>
       </div>
     </div>
-    <div class="pics-tab row" ng-if="tab === 2">
-      <div class="card col-20" ng-repeat="post in posts" ng-if="post.image">
-        <div class="image-card">
-          <img ng-src="{{post.image}}">
+    <div class="pics-tab" ng-if="tab === 2">
+      <div class="row" ng-repeat="image in images track by $index" ng-if="$index % 4 === 0">
+        <div class="col col-25" ng-if="$index < images.length">
+          <img ng-src="{{images[$index]}}" width="100%"/>
+        </div>
+        <div class="col col-25" ng-if="$index + 1 < images.length">
+          <img ng-src="{{images[$index + 1]}}" width="100%"/>
+        </div>
+        <div class="col col-25" ng-if="$index + 2 < images.length">
+          <img ng-src="{{images[$index + 2]}}" width="100%"/>
+        </div>
+        <div class="col col-25" ng-if="$index + 3 < images.length">
+          <img ng-src="{{images[$index + 3]}}" width="100%"/>
         </div>
       </div>
     </div>

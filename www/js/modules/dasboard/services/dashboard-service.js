@@ -39,15 +39,11 @@ function DashboardService($q, $cordovaCamera) {
 
   this.newComment = (postId, uid, comment) => {
     let commentsRef = firebase.database().ref("posts/" + postId + "/comments");
-    let q = $q.defer();
     commentsRef.push({
       message: comment.message,
       uid: uid,
       created: -(moment().unix())
-    }).then(data => {
-      q.resolve(data);
     });
-    return q.promise
   };
 
 
