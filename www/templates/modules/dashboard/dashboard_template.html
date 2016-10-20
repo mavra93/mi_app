@@ -16,10 +16,10 @@
           <div class="status">
             {{"dashboard.status" | translate}}
           </div>
-          <div class="select-photo" ng-click="newImagePost('FILE_URI')">
+          <div class="select-photo" ng-click="newImagePost('PHOTOLIBRARY')">
             {{"dashboard.selectPhoto" | translate}}
           </div>
-          <div class="add-photo" ng-click="newImagePost('DATA_URI')">
+          <div class="add-photo" ng-click="newImagePost('CAMERA')">
             {{"dashboard.addPhoto" | translate}}
           </div>
         </div>
@@ -41,7 +41,7 @@
             {{"dashboard.comment" | translate}}
           </div>
           <div class="status">
-            {{post.commentsLength}}
+            {{post.numberOfComments}}
           </div>
         </div>
       </div>

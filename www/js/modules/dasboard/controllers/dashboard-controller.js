@@ -1,5 +1,5 @@
 "use strict";
-angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Auth, UserService, DashboardService, $ionicModal, $ionicScrollDelegate) {
+angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Auth, UserService, DashboardService, $ionicModal, $ionicScrollDelegate, $firebaseObject, $firebaseArray) {
 
   $scope.users = UserService.users;
   $scope.posts = [];
@@ -7,15 +7,20 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
   let newPost = false;
   let postsRef = firebase.database().ref("posts/");
   var scrollRef = new firebase.util.Scroll(postsRef, "created");
+
+  let getCommentsLength = (post) => {
+    return Object.keys(post.comments).length;
+  };
+
   //new post added
   scrollRef.on("child_added", posts => {
     let post = posts.val();
     $scope.hasMoreData = true;
     let currentDateTime = moment().unix();
     let postCreated = post.created * (-1);
-    post.id = posts.key;
+    post.$id = posts.key;
     if (post.comments) {
-      post.commentsLength = Object.keys(post.comments).length;
+      post.commentsLength = getCommentsLength(post);
     } else {
       post.commentsLength = null;
     }
@@ -31,6 +36,15 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
     $scope.$broadcast("scroll.infiniteScrollComplete");
     $scope.$applyAsync();
     newPost = false;
+  });
+
+  postsRef.on("child_changed", (data) => {
+    $scope.posts.forEach(post => {
+      if (data.key === post.$id) {
+        post.numberOfComments = data.val().numberOfComments;
+        $scope.$applyAsync();
+      }
+    })
   });
 
 
@@ -67,8 +81,8 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
 
   //Post image directly from dashboard
   $scope.newImagePost = (type) => {
-    $scope.newPostModal.show();
-    $scope.addImage(type)
+    $scope.openNewPostModal();
+    DashboardService.addImage(type)
   };
 
 
@@ -88,7 +102,7 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
         $scope.postButtonDisabled = true;
         DashboardService.addImage(type).then(image => {
           $scope.postButtonDisabled = false;
-          $scope.newPost.image = image;
+          $scope.newPostModal.image = image;
         })
       };
 
@@ -96,7 +110,8 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
         let newPostObject = {
           title: post.title,
           message: post.message,
-          image: post.image
+          image: post.image,
+          numberOfComments: 0
         };
         newPost = true;
         DashboardService.newPost(newPostObject, $scope.user.uid).then(()=> {
@@ -104,6 +119,11 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
           post.title = post.message = post.image = undefined;
         });
       };
+
+      $scope.closeNewPostModal = () => {
+        $scope.newPostModal.hide();
+        $scope.newPostModal.remove();
+      }
     });
   };
 
@@ -117,7 +137,9 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
       scope: $scope,
       animation: "no-animation"
     }).then(modal => {
-      let newComment = false;
+      let commentsRef = firebase.database().ref("posts/" + post.$id + "/comments");
+      $scope.commentsModal = modal;
+      $scope.commentsModal.show();
       $scope.comment = {
         message: ""
       };
@@ -125,36 +147,20 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
         // Scroll to the bottom
         $ionicScrollDelegate.$getByHandle("modalContent").scrollBottom();
       };
-
-      $scope.commentsModal = modal;
-      let postsRef = firebase.database().ref("posts/" + post.id + "/comments");
-      $scope.comments = [];
-      $scope.commentsModal.show();
-      $scope.postId = post.id;
-
-      //Watch if any new comment added
-      postsRef.on("child_added", data => {
-        let comment = data.val();
-        if ($scope.comments.length > 1) {
-          if ($scope.comments[$scope.comments.length - 1].message !== comment.message || $scope.comments[$scope.comments.length - 1].created !== comment.created) {
-            $scope.comments.push(comment);
-          }
-        } else {
-          $scope.comments.push(comment);
-        }
-        if (newComment) {
-          post.commentsLength++;
-        }
-        $scope.$applyAsync();
-        scrollBottom();
-        });
+      $scope.comments = $firebaseArray(commentsRef);
+      scrollBottom();
 
       //Add new comment
       $scope.newComment = () => {
-        newComment = true;
-        DashboardService.newComment($scope.postId, $scope.user.uid, $scope.comment);
+        DashboardService.newComment(post, $scope.user.uid, $scope.comment, $scope.comments.length);
         $scope.comment.message = "";
+        scrollBottom();
       };
+
+      $scope.closeCommentsModal = () => {
+        $scope.commentsModal.hide();
+        $scope.commentsModal.remove();
+      }
     });
   };
 
@@ -168,9 +174,16 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
       animation: "no-animation"
     }).then(modal => {
       $scope.postDetailsModal = modal;
-
+      if (post.new) {
+        post.new = false;
+      }
       $scope.post = post;
       $scope.postDetailsModal.show();
+
+      $scope.closePostDetailsModal = () => {
+        $scope.postDetailsModal.hide();
+        $scope.postDetailsModal.remove();
+      }
     })
   };
 

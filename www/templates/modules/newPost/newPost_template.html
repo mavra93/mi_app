@@ -1,6 +1,6 @@
 <ion-modal-view>
   <ion-header-bar class="bar-positive mi-bar">
-    <div class="buttons" ng-click="newPostModal.remove()">
+    <div class="buttons" ng-click="closeNewPostModal()">
       <p>{{"dashboard.cancel" | translate}}</p>
     </div>
     <h1 class="mi-bar-title">{{"dashboard.newPost" | translate}}</h1>
@@ -36,15 +36,15 @@
       </div>
     </div>
     <div class="photo-buttons">
-      <button class="button button-outline button-positive add-select-photo" ng-click="addImage('DATA_URL')">
+      <button class="button button-outline button-positive add-select-photo" ng-click="addImage('CAMERA')">
         {{"dashboard.addPhoto" | translate}}
       </button>
-      <button class="button button-outline button-positive add-select-photo" ng-click="addImage('FILE_URL')">
+      <button class="button button-outline button-positive add-select-photo" ng-click="addImage('PHOTOLIBRARY')">
         {{"dashboard.selectPhoto" | translate}}
       </button>
     </div>
-      <div class="image" ng-if="newPost.image">
-        <img ng-src="{{newPost.image}}">
+      <div class="image" ng-if="newPostModal.image">
+        <img ng-src="{{newPostModal.image}}">
     </div>
     </form>
   </ion-content>

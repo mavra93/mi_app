@@ -1,9 +1,8 @@
 <ion-modal-view class="dashboard-detail">
   <ion-header-bar class="bar-positive mi-bar">
-    <div class="buttons" ng-click="postDetailsModal.remove()">
+    <div class="buttons" ng-click="closePostDetailsModal()">
       <i class="ion-ios-close-outline"></i>
     </div>
-    <h1 class="mi-bar-title">{{post.title | limitTo: 20}}</h1>
   </ion-header-bar>
   <ion-content class="view-wrapper" delegate-handle="modalContent">
     <div class="header" ng-if="post.image">
@@ -11,8 +10,9 @@
     </div>
     <div class="post-title">
       <p>{{post.title}}</p>
-
-      <p>{{(-1*post.created) | amFromUnix | amDateFormat: "LL"}}</p>
+    </div>
+    <div class="post-date">
+      <p>{{(-1*post.created) | amFromUnix | amDateFormat: "LLL"}}</p>
     </div>
     <div class="post-message">
       {{post.message}}

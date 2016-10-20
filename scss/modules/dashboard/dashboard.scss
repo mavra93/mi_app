@@ -118,27 +118,22 @@
     height: auto;
     display: flex;
     align-items: center;
-    text-align: left;
+    text-align: center;
     padding-left: 20px;
     padding-right: 20px;
     color: $normal-grey;
     border-bottom: 1px solid $light-grey;
     font-size: 18px;
-    justify-content: space-between;
+    justify-content: center;
+  }
+  .post-date {
+    border-bottom: 1px solid $light-grey;
+    color: $normal-grey;
+    font-size: 16px;
+    text-align: center;
+    align-items: center;
     p {
       margin: 0;
-      width: 50%;
-      &:first-child {
-        white-space: nowrap;
-        width: 50%;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        border-right: 1px solid $light-grey;
-      }
-      &:last-child {
-        text-align: right;
-        font-size: 14px;
-      }
     }
   }
   .post-message {

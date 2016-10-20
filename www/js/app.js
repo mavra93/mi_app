@@ -1,4 +1,4 @@
-angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ngCordova", "angularMoment", "ionic.contrib.NativeDrawer", "ionic-native-transitions", "jett.ionic.scroll.sista"])
+angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ngCordova", "angularMoment", "ionic.contrib.NativeDrawer", "ionic-native-transitions", "jett.ionic.scroll.sista", "firebase"])
 
   .run(function ($ionicPlatform, $rootScope, $state) {
     $ionicPlatform.ready(function () {

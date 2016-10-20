@@ -8,7 +8,8 @@ function DashboardService($q, $cordovaCamera) {
       message: post.message,
       image: post.image || null,
       uid: uid,
-      created: -(moment().unix())
+      created: -(moment().unix()),
+      numberOfComments: post.numberOfComments
     }).then(data => {
       q.resolve(data);
     });
@@ -19,8 +20,8 @@ function DashboardService($q, $cordovaCamera) {
     let q = $q.defer();
     let options = {
       quality: 75,
-      destinationType: Camera.DestinationType[type],
-      sourceType: Camera.PictureSourceType.CAMERA,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType[type],
       allowEdit: true,
       correctOrientation: true,
       encodingType: Camera.EncodingType.JPEG,
@@ -37,13 +38,15 @@ function DashboardService($q, $cordovaCamera) {
     return q.promise
   };
 
-  this.newComment = (postId, uid, comment) => {
-    let commentsRef = firebase.database().ref("posts/" + postId + "/comments");
+  this.newComment = (post, uid, comment, commentsLength) => {
+    let commentsRef = firebase.database().ref("posts/" + post.$id + "/comments");
     commentsRef.push({
       message: comment.message,
       uid: uid,
       created: -(moment().unix())
     });
+    let postRef = firebase.database().ref("posts/" + post.$id);
+    postRef.update({numberOfComments: commentsLength + 1});
   };
 
 
