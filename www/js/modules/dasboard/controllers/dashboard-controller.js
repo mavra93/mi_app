@@ -82,7 +82,11 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
   //Post image directly from dashboard
   $scope.newImagePost = (type) => {
     $scope.openNewPostModal();
-    DashboardService.addImage(type)
+    $scope.postButtonDisabled = true;
+    DashboardService.addImage(type).then(image => {
+      $scope.postButtonDisabled = false;
+      $scope.newPostModal.image = image;
+    })
   };
 
 

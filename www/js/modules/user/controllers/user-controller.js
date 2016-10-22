@@ -15,18 +15,19 @@ angular.module("miApp").controller("UserCtrl", function ($scope, UserService, $s
     $scope.tab = tab;
   };
 
-  /**
-   Post details modal
-   */
-
-  $ionicModal.fromTemplateUrl("templates/modules/dashboard/dashboardDetail_template.html", {
-    scope: $scope,
-    animation: 'no-animation'
-  }).then(modal => {
-    $scope.postDetailsModal = modal;
-    $scope.openPostDetails = (post) => {
+  $scope.openPostDetails = (post) => {
+    $ionicModal.fromTemplateUrl("templates/modules/dashboard/dashboardDetail_template.html", {
+      scope: $scope,
+      animation: "no-animation"
+    }).then(modal => {
+      $scope.postDetailsModal = modal;
       $scope.post = post;
       $scope.postDetailsModal.show();
-    };
-  });
+
+      $scope.closePostDetailsModal = () => {
+        $scope.postDetailsModal.hide();
+        $scope.postDetailsModal.remove();
+      }
+    })
+  };
 });
