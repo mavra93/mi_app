@@ -1,0 +1,239 @@
+.dashboard {
+  .card {
+    border: 1px solid $light-grey;
+    .item {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      .new-post-header {
+        display: flex;
+        width: 100%;
+        .user-image {
+          width: 20%;
+          padding: 3%;
+          img {
+            width: 100%;
+            height: 100%;
+            border-radius: 6px;
+          }
+        }
+        .write-something {
+          padding: 3%;
+          width: 100%;
+          color: $normal-grey;
+          input {
+            width: 100%;
+          }
+        }
+      }
+      .new-post-footer {
+        height: 40px;
+        display: flex;
+        background: $light-grey;
+        justify-content: space-between;
+        align-items: center;
+        padding-right: 5%;
+        padding-left: 5%;
+        color: $normal-grey;
+      }
+    }
+  }
+  .posts-list-wrapper {
+    padding-top: 40px;
+
+    .posts-list {
+      margin-bottom: 40px;
+      border: 1px solid $light-grey;
+      .item-body {
+        .post-title {
+          padding: 3%;
+          h2 {
+            color: $grey;
+            font-size: 30px;
+            margin: 0;
+            white-space: nowrap;
+            width: 100%;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+        }
+        .post-owner {
+          display: flex;
+          padding: 3%;
+          .owner-photo {
+            img {
+              width: 50px;
+              height: 50px;
+            }
+          }
+          .status {
+            padding-left: 20px;
+            padding-top: 5px;
+            p {
+              margin: 0;
+              font-size: 18px;
+              font-weight: bold;
+            }
+          }
+        }
+        .post-image {
+          img {
+            height: 250px;
+            width: 100%;
+          }
+        }
+      }
+      .new-badge {
+        position: absolute;
+        background: $error-pink;
+        height: 20px;
+        z-index: 100;
+        right: 0;
+        width: 20%;
+        top: 5%;
+        text-align: center;
+        color: white;
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+.dashboard-detail {
+  .mi-bar {
+    .buttons {
+      width: 25%;
+      padding-left: 20px;
+      font-size: 30px;
+    }
+  }
+  .header {
+    img {
+      width: 100%;
+    }
+  }
+  .post-title {
+    min-height: 50px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    color: $normal-grey;
+    border-bottom: 1px solid $light-grey;
+    font-size: 18px;
+    justify-content: center;
+  }
+  .post-date {
+    border-bottom: 1px solid $light-grey;
+    color: $normal-grey;
+    font-size: 16px;
+    text-align: center;
+    align-items: center;
+    p {
+      margin: 0;
+    }
+  }
+  .post-message {
+    padding: 20px 20px 60px 20px;
+    color: black;
+    font-size: 14px;
+  }
+}
+
+.dashboard-footer {
+  background: $light-grey;
+  color: $normal-grey;
+}
+
+.comment-modal {
+  display: flex;
+  justify-content: center;
+  h4 {
+    text-align: center;
+    color: $grey;
+  }
+  .mi-bar {
+    .buttons {
+      width: 25%;
+      padding-left: 20px;
+      font-size: 30px;
+    }
+  }
+  .comment-wrapper {
+    padding-bottom: 50px;
+    padding-top: 20px;
+    li {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border: 1px solid $light-grey;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .post-owner {
+      width: 100%;
+      display: flex;
+      .owner-photo {
+        width: 20%;
+        img {
+          border-radius: 6px;
+          width: 50px;
+          height: 50px;
+        }
+      }
+      .status {
+        width: 80%;
+        border-bottom: 1px solid $light-grey;
+        display: flex;
+        align-items: center;
+        color: $normal-grey;
+        p {
+          width: 50%;
+          font-weight: bold;
+          border-right: 1px solid $light-grey;
+          margin: 0;
+        }
+        span {
+          text-align: right;
+          width: 50%;
+        }
+      }
+    }
+    .comment-message {
+      padding: 20px 0 0 20%;
+    }
+  }
+  .bar {
+    border-top: 1px solid $light-grey;
+    form {
+      width: 100%;
+      display: flex;
+      input {
+        padding-top: 10px;
+        padding-left: 20px;
+        width: 80%;
+      }
+      button {
+        width: 20%;
+        background: transparent;
+        border: none;
+        font-size: 28px;
+        color: $light-blue;
+      }
+    }
+  }
+}
+
+.mi-bar {
+  .post-button {
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    color: white;
+  }
+}
+
+

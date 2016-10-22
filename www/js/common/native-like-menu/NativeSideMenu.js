@@ -264,19 +264,20 @@
         doEndDrag(e);
       }, $document);
 
+      $rootScope.$on('$stateChangeStart',
+        () => {
+          closeDrawer();
+        });
+
       var dragGesture = $ionicGesture.on('drag', dragFunction, $document);
-      var dragEndGesture = $ionicGesture.on('dragend', dragEndFunction, $document);
       var contentTapGesture = $ionicGesture.on('tap', onContentTap, mainContent);
       var contentDragGesture = $ionicGesture.on('drag', onContentDrag, mainContent);
-      var contentDragEndGesture = $ionicGesture.on('dragend', contentDragEndFunction, mainContent);
 
       $scope.$on('$destroy', function () {
 
         $ionicGesture.off(dragGesture, 'drag', dragFunction);
-        $ionicGesture.off(dragEndGesture, 'dragend', dragEndFunction);
         $ionicGesture.off(contentTapGesture, 'tap', onContentTap);
         $ionicGesture.off(contentDragGesture, 'drag', onContentDrag);
-        $ionicGesture.off(contentDragEndGesture, 'dragend', contentDragEndFunction);
       });
 
     }])

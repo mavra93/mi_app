@@ -1,0 +1,18 @@
+{
+  "dashboard": {
+    "timeline": "Početna",
+    "writeSomething": "Napiši nešto",
+    "status": "Nova objava",
+    "selectPhoto": "Dodaj fotografiju",
+    "addPhoto": "Slikaj",
+    "comment": "Komentiraj",
+    "new": "Novi",
+    "comments": "Komentari",
+    "commentsDescription": "Još nema komentara. Budi prvi koji će komentirati",
+    "writeComment": "Napišite komentar",
+    "post": "Objavi",
+    "cancel": "Otkaži",
+    "title": "Naslov",
+    "newPost": "Nova objava"
+  }
+}

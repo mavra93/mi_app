@@ -1,0 +1,32 @@
+<ion-view>
+  <ion-content class="view-wrapper edit-account">
+    <div class="list">
+      <div ng-repeat="post in posts">
+        {{post.postMessage}}
+      </div>
+      <label class="item item-input item-floating-label">
+        <span class="input-label">{{"user.username" | translate}}</span>
+        <input type="text" placeholder="{{'user.username' | translate}}" ng-required="true"
+               ng-model="userProfile.displayName">
+      </label>
+      <label class="item item-input">{{"user.language" | translate}}</label>
+
+      <div class="languages-wrapper">
+        <button class="language-wrapper" ng-click="changeLanguage('en')" ng-class="{'active': language === 'en'}">
+          {{"user.eng" | translate}}
+        </button>
+        <button class="language-wrapper" ng-click="changeLanguage('hr')" ng-class="{'active': language === 'hr'}">
+          {{"user.hrv" | translate}}
+        </button>
+      </div>
+    </div>
+    <div class="user-image">
+      <img ng-src="{{userProfile.photoURL}}">
+    </div>
+    <button class="button button-block button-positive" ng-click="uploadImage()">{{"user.changePhoto" | translate}}
+    </button>
+    <button class="button button-block button-positive" ng-click="updateProfile()">{{"user.saveAccount" | translate}}
+    </button>
+  </ion-content>
+</ion-view>
+

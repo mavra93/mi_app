@@ -1,0 +1,17 @@
+{
+  "user": {
+    "title": "Korisnički račun",
+    "posts": "Objave",
+    "pics": "Slike",
+    "settings": "Postavke",
+    "editAccount": "Uredi račun",
+    "changePassword": "Promijeni lozinku",
+    "signOut": "Odjava",
+    "username": "Korisničko ime",
+    "language": "Jezik aplikacije",
+    "eng": "Engleski",
+    "hrv": "Hrvatski",
+    "changePhoto": "Promijeni sliku",
+    "saveAccount": "Spremi račun"
+  }
+}

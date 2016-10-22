@@ -1,0 +1,71 @@
+<ion-view hide-back-button="true">
+  <ion-nav-title>{{"user.title" | translate}}</ion-nav-title>
+  <ion-content class="view-wrapper user">
+    <div class="user-header">
+      <div class="top-header">
+        <div class="user-header-left">
+          <img ng-src="{{userProfile.photoURL}}">
+        </div>
+        <div class="user-header-right">
+          <div class="top-data">
+            <div class="user-posts">
+              {{posts.length}} {{"user.posts" | translate}}
+            </div>
+            <div class="user-pics">
+              {{images.length}} {{"user.pics" | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-header">
+        <h3>{{userProfile.displayName}}</h3>
+        <h5>{{userProfile.email}}</h5>
+      </div>
+    </div>
+    <div class="user-tabs" ng-if="tab === 1">
+      <div class="posts-tab list card posts-list" ng-repeat="post in posts" ng-click="openPostDetails(post)">
+        <div class="item item-body">
+          <div class="post-title">
+            <h2>{{post.title}}</h2>
+          </div>
+          <div class="new-post-footer">
+            <div class="status">
+              <span am-time-ago="(-1*post.created) | amFromUnix"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pics-tab" ng-if="tab === 2">
+      <div class="row" ng-repeat="image in images track by $index" ng-if="$index % 4 === 0">
+        <div class="col col-25" ng-if="$index < images.length">
+          <img ng-src="{{images[$index]}}" width="100%"/>
+        </div>
+        <div class="col col-25" ng-if="$index + 1 < images.length">
+          <img ng-src="{{images[$index + 1]}}" width="100%"/>
+        </div>
+        <div class="col col-25" ng-if="$index + 2 < images.length">
+          <img ng-src="{{images[$index + 2]}}" width="100%"/>
+        </div>
+        <div class="col col-25" ng-if="$index + 3 < images.length">
+          <img ng-src="{{images[$index + 3]}}" width="100%"/>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+  <div class="tabs tabs-icon-left">
+    <a class="tab-item" ng-click="changeTab(1)">
+      <i class="icon ion-ios-paper"></i>
+      {{"user.posts" | translate}}
+    </a>
+    <a class="tab-item" ng-click="changeTab(2)">
+      <i class="icon ion-images"></i>
+      {{"user.pics" | translate}}
+    </a>
+    <a class="tab-item" ui-sref="app.settings">
+      <i class="icon ion-gear-a"></i>
+      {{"user.settings" | translate}}
+    </a>
+  </div>
+</ion-view>
+

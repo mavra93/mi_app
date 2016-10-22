@@ -1,0 +1,9 @@
+<div class="post-owner">
+  <div class="owner-photo">
+    <img ng-src="{{ctrl.user.image.path}}">
+  </div>
+  <div class="status">
+    <p>{{ctrl.user.username}}</p>
+    <span am-time-ago="(-1*ctrl.created) | amFromUnix | amLocal"></span>
+  </div>
+</div>

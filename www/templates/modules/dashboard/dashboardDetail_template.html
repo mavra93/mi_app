@@ -1,0 +1,25 @@
+<ion-modal-view class="dashboard-detail">
+  <ion-header-bar class="bar-positive mi-bar">
+    <div class="buttons" ng-click="closePostDetailsModal()">
+      <i class="ion-ios-close-outline"></i>
+    </div>
+  </ion-header-bar>
+  <ion-content class="view-wrapper" delegate-handle="modalContent">
+    <div class="header" ng-if="post.image">
+      <img ng-src="{{post.image}}">
+    </div>
+    <div class="post-title">
+      <p>{{post.title}}</p>
+    </div>
+    <div class="post-date">
+      <p>{{(-1*post.created) | amFromUnix | amDateFormat: "LLL"}}</p>
+    </div>
+    <div class="post-message">
+      {{post.message}}
+    </div>
+  </ion-content>
+  <div class="bar bar-footer dashboard-footer">
+    <div class="title" ng-click="openCommentModal(post)">{{"dashboard.comment" | translate}}</div>
+  </div>
+</ion-modal-view>
+

@@ -1,0 +1,18 @@
+<ion-view>
+  <ion-content class="settings">
+    <ul class="list">
+      <li class="item" ui-sref="app.editAccount">
+        {{"user.editAccount" | translate}}
+        <i class="icon ion-chevron-right"></i>
+      </li>
+      <li class="item">
+        {{"user.changePassword" | translate}}
+        <i class="icon ion-chevron-right"></i>
+      </li>
+      <li class="item" ng-click="logout()">
+        {{"user.signOut" | translate}}
+        <i class="icon ion-log-out"></i>
+      </li>
+    </ul>
+  </ion-content>
+</ion-view>

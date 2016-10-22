@@ -1,0 +1,18 @@
+{
+  "dashboard": {
+    "timeline": "Timeline",
+    "writeSomething": "Write something",
+    "status": "Status",
+    "selectPhoto": "Select photo",
+    "addPhoto": "Add photo",
+    "comment": "Comment",
+    "new": "New",
+    "comments": "Comments",
+    "commentsDescription": "No comments yet. Be the first to leave a reply",
+    "writeComment": "Write a comment",
+    "post": "Post",
+    "cancel": "Cancel",
+    "title": "Title",
+    "newPost": "New post"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "user": {
+    "title": "User profile",
+    "posts": "Posts",
+    "pics": "Pictures",
+    "settings": "Settings",
+    "editAccount": "Edit account",
+    "changePassword": "Change password",
+    "signOut": "Sign out",
+    "username": "Username",
+    "language": "Language",
+    "eng": "English",
+    "hrv": "Croatian",
+    "changePhoto": "Change photo",
+    "saveAccount": "Save account"
+  }
+}
