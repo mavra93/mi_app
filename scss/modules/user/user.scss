@@ -11,7 +11,7 @@
           width: 100%;
           height: 88px;
           border: 2px solid $light-grey;
-          border-radius: 2px;
+          border-radius: 6px;
         }
       }
       .user-header-right {
@@ -120,3 +120,6 @@
   }
 }
 
+#user-tabs-wrapper {
+  border-top: 1px solid $light-grey;
+}

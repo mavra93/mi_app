@@ -40,6 +40,9 @@
 
 .bar-positive-900 {
   background: $header-background !important;
+  button {
+    color: white;
+  }
 }
 
 * {

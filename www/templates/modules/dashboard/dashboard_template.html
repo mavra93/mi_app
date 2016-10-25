@@ -1,5 +1,4 @@
 <ion-view hide-back-button="true">
-  <ion-nav-title>{{"dashboard.timeline" | translate}}</ion-nav-title>
   <ion-content class="view-wrapper dashboard">
     <div class="list card">
       <div class="item item-body">
@@ -13,7 +12,7 @@
 
         </div>
         <div class="new-post-footer">
-          <div class="status">
+          <div class="status" ng-click="openNewPostModal()">
             {{"dashboard.status" | translate}}
           </div>
           <div class="select-photo" ng-click="newImagePost('PHOTOLIBRARY')">

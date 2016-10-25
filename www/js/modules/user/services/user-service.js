@@ -6,6 +6,7 @@ function UserService($q, $cordovaCamera, $translate, localStorageService, amMome
   this.getCurrentUser = () => {
     let q = $q.defer();
     let observer = user => {
+      this.user = user;
       q.resolve(user);
       unsubscribe();
     };
@@ -74,7 +75,7 @@ function UserService($q, $cordovaCamera, $translate, localStorageService, amMome
 
   this.updateProfile = (user) => {
     let q = $q.defer();
-    user.updateProfile(user).then(data => {
+    this.user.updateProfile(user).then(data => {
       q.resolve(data)
     }, function (error) {
       q.reject(error);
