@@ -58,7 +58,7 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         url: "/app",
         abstract: true,
         templateUrl: "templates/modules/tabs/tabs_template.html",
-        controller: "SidemenuCtrl",
+        controller: "TabsController",
         onEnter: function ($state, localStorageService, UserService) {
           let language = localStorageService.get("language");
           let user = localStorageService.get("user") || null;
