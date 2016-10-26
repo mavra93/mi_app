@@ -1,4 +1,4 @@
-angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ngCordova", "angularMoment", "ionic.contrib.NativeDrawer", "ionic-native-transitions", "jett.ionic.scroll.sista", "firebase"])
+angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ngCordova", "angularMoment", "ionic-native-transitions", "jett.ionic.scroll.sista", "firebase"])
 
   .run(function ($ionicPlatform, $rootScope, $state) {
     $ionicPlatform.ready(function () {
@@ -57,8 +57,8 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
       .state("app", {
         url: "/app",
         abstract: true,
-        templateUrl: "templates/modules/sidemenu/sidemenu_template.html",
-        controller: "SidemenuCtrl",
+        templateUrl: "templates/modules/tabs/tabs_template.html",
+        controller: "TabsController",
         onEnter: function ($state, localStorageService, UserService) {
           let language = localStorageService.get("language");
           let user = localStorageService.get("user") || null;
@@ -72,13 +72,16 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
       .state("app.dashboard", {
         url: "/dashboard",
         views: {
-          menuContent: {
+          dashboard: {
             templateUrl: "templates/modules/dashboard/dashboard_template.html",
             controller: "DashboardCtrl"
           }
         },
         params: {
           username: null
+        },
+        nativeTransitionsAndroid: {
+          "type": "fade"
         }
       })
       .state("app.newPost", {
@@ -99,7 +102,7 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
       .state("app.user", {
         url: "/user",
         views: {
-          menuContent: {
+          user: {
             templateUrl: "templates/modules/user/user_template.html",
             controller: "UserCtrl"
           }
@@ -123,7 +126,7 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
       .state("app.settings", {
         url: "/settings",
         views: {
-          menuContent: {
+          user: {
             templateUrl: "templates/modules/user/settings_template.html",
             controller: "SettingsCtrl"
           }
@@ -135,7 +138,7 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
       .state("app.editAccount", {
         url: "/editAccount",
         views: {
-          menuContent: {
+          user: {
             templateUrl: "templates/modules/user/editAccount_template.html",
             controller: "EditAccountCtrl"
           }

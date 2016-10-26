@@ -1,0 +1,29 @@
+.tabs-wrapper {
+  .tabs {
+    a {
+      i {
+        font-size: 22px;
+      }
+    }
+  }
+  .tab-item.activated {
+    height: 48px;
+  }
+  ion-nav-buttons {
+    .right-buttons {
+      color: white;
+    }
+  }
+  .users-sidemenu-wrapper {
+    color: white;
+    ion-header-bar {
+      background: $dark-blue;
+      .title {
+        color: white;
+      }
+    }
+    ion-content {
+      background: $darker-blue;
+    }
+  }
+}

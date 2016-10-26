@@ -1,7 +1,6 @@
 <ion-view hide-back-button="true">
-  <ion-nav-title>{{"dashboard.timeline" | translate}}</ion-nav-title>
   <ion-content class="view-wrapper dashboard">
-    <div class="list card">
+    <div class="new-post-wrapper">
       <div class="item item-body">
         <div class="new-post-header">
           <div class="user-image">
@@ -13,7 +12,7 @@
 
         </div>
         <div class="new-post-footer">
-          <div class="status">
+          <div class="status" ng-click="openNewPostModal()">
             {{"dashboard.status" | translate}}
           </div>
           <div class="select-photo" ng-click="newImagePost('PHOTOLIBRARY')">
@@ -26,25 +25,25 @@
       </div>
     </div>
     <div class="posts-list-wrapper">
-      <div class="list card posts-list" ng-repeat="post in posts">
+      <div class="posts-list" ng-repeat="post in posts">
         <div class="new-badge" ng-if="post.new">{{"dashboard.new" | translate | uppercase}}</div>
-      <div class="item item-body">
-        <div class="post-image" ng-if="post.image" ng-click="openPostDetails(post)">
-          <img ng-src="{{post.image}}">
-        </div>
-        <div class="post-title" ng-click="openPostDetails(post)">
-          <h2>{{post.title}}</h2>
-        </div>
         <post-owner uid="post.uid" created="post.created"></post-owner>
-        <div class="new-post-footer">
-          <div class="status" ng-click="openCommentModal(post)">
-            {{"dashboard.comment" | translate}}
+        <div class="item item-body">
+          <div class="post-image" ng-if="post.image" ng-click="openPostDetails(post)">
+            <img ng-src="{{post.image}}">
           </div>
-          <div class="status">
-            {{post.numberOfComments}}
+          <div class="post-message" ng-click="openPostDetails(post)">
+            <p>{{post.message | limitTo:100}}</p>
+          </div>
+          <div class="comment-footer" ng-click="openCommentModal(post)">
+            <div class="chat-icon">
+              <i class="ion-ios-chatbubble-outline"></i>
+            </div>
+            <div class="number-of-comments">
+              {{post.numberOfComments}}
+            </div>
           </div>
         </div>
-      </div>
       </div>
       <div ng-show="hasMoreData">
         <ion-infinite-scroll on-infinite="loadMore()">

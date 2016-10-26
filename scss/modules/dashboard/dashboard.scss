@@ -1,10 +1,15 @@
 .dashboard {
-  .card {
-    border: 1px solid $light-grey;
+  .scroll {
+    padding-top: 20px;
+  }
+  .new-post-wrapper {
+    border-top: 1px solid $light-grey;
     .item {
       display: flex;
       flex-direction: column;
       padding: 0;
+      margin: 0;
+      border: none;
       .new-post-header {
         display: flex;
         width: 100%;
@@ -42,45 +47,64 @@
     padding-top: 40px;
 
     .posts-list {
-      margin-bottom: 40px;
-      border: 1px solid $light-grey;
-      .item-body {
-        .post-title {
-          padding: 3%;
-          h2 {
-            color: $grey;
-            font-size: 30px;
+      background: white;
+      border-top: 1px solid $light-grey;
+      border-bottom: 1px solid $light-grey;
+      margin-bottom: 20px;
+      .post-owner {
+        display: flex;
+        padding: 3%;
+        .owner-photo {
+          img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+          }
+        }
+        .status {
+          padding-left: 20px;
+          padding-top: 5px;
+          color: $dark;
+          p {
             margin: 0;
-            white-space: nowrap;
+            font-size: 18px;
+            font-weight: bold;
+          }
+        }
+      }
+      .item-body {
+        border: none;
+        padding: 0;
+        .post-message {
+          padding: 2%;
+          p {
+            color: $dark;
+            font-size: 16px;
+            margin: 0;
             width: 100%;
             overflow: hidden;
             text-overflow: ellipsis;
-          }
-
-        }
-        .post-owner {
-          display: flex;
-          padding: 3%;
-          .owner-photo {
-            img {
-              width: 50px;
-              height: 50px;
-            }
-          }
-          .status {
-            padding-left: 20px;
-            padding-top: 5px;
-            p {
-              margin: 0;
-              font-size: 18px;
-              font-weight: bold;
-            }
           }
         }
         .post-image {
           img {
             height: 250px;
             width: 100%;
+          }
+        }
+        .comment-footer {
+          display: flex;
+          padding: 2%;
+          font-size: 18px;
+          .chat-icon {
+            i {
+              color: $gray;
+              font-size: 35px;
+            }
+          }
+          .number-of-comments {
+            padding-left: 10px;
+            padding-top: 7px;
           }
         }
       }
@@ -91,7 +115,6 @@
         z-index: 100;
         right: 0;
         width: 20%;
-        top: 5%;
         text-align: center;
         color: white;
         font-weight: bold;

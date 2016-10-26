@@ -1,5 +1,4 @@
-<ion-view hide-back-button="true">
-  <ion-nav-title>{{"user.title" | translate}}</ion-nav-title>
+<ion-view>
   <ion-content class="view-wrapper user">
     <div class="user-header">
       <div class="top-header">
@@ -53,18 +52,15 @@
       </div>
     </div>
   </ion-content>
-  <div class="tabs tabs-icon-left">
+  <div class="tabs tabs-icon-left" id="user-tabs-wrapper">
     <a class="tab-item" ng-click="changeTab(1)">
       <i class="icon ion-ios-paper"></i>
-      {{"user.posts" | translate}}
     </a>
     <a class="tab-item" ng-click="changeTab(2)">
       <i class="icon ion-images"></i>
-      {{"user.pics" | translate}}
     </a>
     <a class="tab-item" ui-sref="app.settings">
       <i class="icon ion-gear-a"></i>
-      {{"user.settings" | translate}}
     </a>
   </div>
 </ion-view>
