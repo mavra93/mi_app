@@ -79,6 +79,9 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         },
         params: {
           username: null
+        },
+        nativeTransitionsAndroid: {
+          "type": "fade"
         }
       })
       .state("app.newPost", {

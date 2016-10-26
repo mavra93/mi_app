@@ -1,116 +1,46 @@
-.error {
-  color: #fff;
-  text-align: center;
-  font-size: 18px;
-  background: #ff565d;
-  padding: 2%
+.dashboard .scroll {
+  padding-top: 20px
 }
 
-.view-wrapper {
-  background-color: #f9f9f9
+.dashboard .new-post-wrapper {
+  border-top: 1px solid #dcdcdc
 }
 
-.mi-bar {
-  display: flex;
-  align-items: center
-}
-
-.mi-bar .mi-bar-title {
-  font-size: 20px;
-  margin: 0;
-  color: #fff;
-  width: 50%;
-  text-align: center
-}
-
-.mi-bar .buttons {
-  width: 25%;
-  text-align: center
-}
-
-.mi-bar .buttons p {
-  margin: 0;
-  width: 100%
-}
-
-.pane {
-  background: 0 0
-}
-
-.platform-android .bar .title {
-  text-align: center
-}
-
-.bar-positive-900 {
-  background: #4e7ac5 !important
-}
-
-.bar-positive-900 button {
-  color: #fff
-}
-
-* {
-  box-shadow: none !important
-}
-
-.mi-checkbox label {
-  border: none;
-  color: #fff;
-  font-size: 16px
-}
-
-.mi-checkbox label .checkbox input:before, .mi-checkbox label .checkbox-icon:before {
-  background: 0 0;
-  border-radius: 0
-}
-
-.mi-checkbox label .checkbox .checkbox-icon:before, .mi-checkbox label .checkbox input:before {
-  border-color: #11c1f3
-}
-
-.mi-checkbox label .checkbox input:checked + .checkbox-icon:before, .mi-checkbox label .checkbox input:checked:before {
-  background: #11c1f3;
-  border-color: #11c1f3;
-  border-radius: 0
-}
-
-.dashboard .card {
-  border: 1px solid #dcdcdc
-}
-
-.dashboard .card .item {
+.dashboard .new-post-wrapper .item {
   display: flex;
   flex-direction: column;
-  padding: 0
+  padding: 0;
+  margin: 0;
+  border: none
 }
 
-.dashboard .card .item .new-post-header {
+.dashboard .new-post-wrapper .item .new-post-header {
   display: flex;
   width: 100%
 }
 
-.dashboard .card .item .new-post-header .user-image {
+.dashboard .new-post-wrapper .item .new-post-header .user-image {
   width: 20%;
   padding: 3%
 }
 
-.dashboard .card .item .new-post-header .user-image img {
+.dashboard .new-post-wrapper .item .new-post-header .user-image img {
   width: 100%;
   height: 100%;
   border-radius: 6px
 }
 
-.dashboard .card .item .new-post-header .write-something {
+.dashboard .new-post-wrapper .item .new-post-header .write-something {
   padding: 3%;
   width: 100%;
   color: #a1a29a
 }
 
-.dashboard .card .item .new-post-header .write-something input {
+.dashboard .new-post-wrapper .item .new-post-header .write-something input {
   width: 100%
 }
 
-.dashboard .card .item .new-post-footer {
+.dashboard .new-post-wrapper .item .new-post-footer {
   height: 40px;
   display: flex;
   background: #dcdcdc;
@@ -126,48 +56,72 @@
 }
 
 .dashboard .posts-list-wrapper .posts-list {
-  margin-bottom: 40px;
-  border: 1px solid #dcdcdc
+  background: #fff;
+  border-top: 1px solid #dcdcdc;
+  border-bottom: 1px solid #dcdcdc;
+  margin-bottom: 20px
 }
 
-.dashboard .posts-list-wrapper .posts-list .item-body .post-title {
-  padding: 3%
-}
-
-.dashboard .posts-list-wrapper .posts-list .item-body .post-title h2 {
-  color: #979797;
-  font-size: 30px;
-  margin: 0;
-  white-space: nowrap;
-  width: 100%;
-  overflow: hidden;
-  text-overflow: ellipsis
-}
-
-.dashboard .posts-list-wrapper .posts-list .item-body .post-owner {
+.dashboard .posts-list-wrapper .posts-list .post-owner {
   display: flex;
   padding: 3%
 }
 
-.dashboard .posts-list-wrapper .posts-list .item-body .post-owner .owner-photo img {
+.dashboard .posts-list-wrapper .posts-list .post-owner .owner-photo img {
   width: 50px;
-  height: 50px
+  height: 50px;
+  border-radius: 50px
 }
 
-.dashboard .posts-list-wrapper .posts-list .item-body .post-owner .status {
+.dashboard .posts-list-wrapper .posts-list .post-owner .status {
   padding-left: 20px;
-  padding-top: 5px
+  padding-top: 5px;
+  color: #222
 }
 
-.dashboard .posts-list-wrapper .posts-list .item-body .post-owner .status p {
+.dashboard .posts-list-wrapper .posts-list .post-owner .status p {
   margin: 0;
   font-size: 18px;
   font-weight: 700
 }
 
+.dashboard .posts-list-wrapper .posts-list .item-body {
+  border: none;
+  padding: 0
+}
+
+.dashboard .posts-list-wrapper .posts-list .item-body .post-message {
+  padding: 2%
+}
+
+.dashboard .posts-list-wrapper .posts-list .item-body .post-message p {
+  color: #222;
+  font-size: 16px;
+  margin: 0;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis
+}
+
 .dashboard .posts-list-wrapper .posts-list .item-body .post-image img {
   height: 250px;
   width: 100%
+}
+
+.dashboard .posts-list-wrapper .posts-list .item-body .comment-footer {
+  display: flex;
+  padding: 2%;
+  font-size: 18px
+}
+
+.dashboard .posts-list-wrapper .posts-list .item-body .comment-footer .chat-icon i {
+  color: #657987;
+  font-size: 35px
+}
+
+.dashboard .posts-list-wrapper .posts-list .item-body .comment-footer .number-of-comments {
+  padding-left: 10px;
+  padding-top: 7px
 }
 
 .dashboard .posts-list-wrapper .posts-list .new-badge {
@@ -177,7 +131,6 @@
   z-index: 100;
   right: 0;
   width: 20%;
-  top: 5%;
   text-align: center;
   color: #fff;
   font-weight: 700
@@ -327,6 +280,82 @@
   border: none;
   font-size: 18px;
   color: #fff
+}
+
+.error {
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  background: #ff565d;
+  padding: 2%
+}
+
+.view-wrapper {
+  background-color: #f9f9f9
+}
+
+.mi-bar {
+  display: flex;
+  align-items: center
+}
+
+.mi-bar .mi-bar-title {
+  font-size: 20px;
+  margin: 0;
+  color: #fff;
+  width: 50%;
+  text-align: center
+}
+
+.mi-bar .buttons {
+  width: 25%;
+  text-align: center
+}
+
+.mi-bar .buttons p {
+  margin: 0;
+  width: 100%
+}
+
+.pane {
+  background: 0 0
+}
+
+.platform-android .bar .title {
+  text-align: center
+}
+
+.bar-positive-900 {
+  background: #4e7ac5 !important
+}
+
+.bar-positive-900 button {
+  color: #fff
+}
+
+* {
+  box-shadow: none !important
+}
+
+.mi-checkbox label {
+  border: none;
+  color: #fff;
+  font-size: 16px
+}
+
+.mi-checkbox label .checkbox input:before, .mi-checkbox label .checkbox-icon:before {
+  background: 0 0;
+  border-radius: 0
+}
+
+.mi-checkbox label .checkbox .checkbox-icon:before, .mi-checkbox label .checkbox input:before {
+  border-color: #11c1f3
+}
+
+.mi-checkbox label .checkbox input:checked + .checkbox-icon:before, .mi-checkbox label .checkbox input:checked:before {
+  background: #11c1f3;
+  border-color: #11c1f3;
+  border-radius: 0
 }
 
 drawer {
