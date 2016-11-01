@@ -51,6 +51,16 @@ function UserService($q, $cordovaCamera, $translate, localStorageService, amMome
       users.push(data.val());
       this.users = users;
     });
+    return users;
+  };
+
+  this.getCurrentUserData = (id) => {
+    let q = $q.defer();
+    let usersRef = firebase.database().ref("users/");
+    usersRef.orderByChild("uid").equalTo(id).on("child_added", data => {
+      q.resolve(data.val());
+    });
+    return q.promise
   };
 
   let postsRef = firebase.database().ref("posts/");

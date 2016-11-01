@@ -84,16 +84,13 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           "type": "fade"
         }
       })
-      .state("app.newPost", {
-        url: "/newPost",
+      .state("app.rooms", {
+        url: "/rooms",
         views: {
-          menuContent: {
-            templateUrl: "templates/modules/newPost/newPost_template.html",
-            controller: "NewPostCtrl"
+          rooms: {
+            templateUrl: "templates/modules/chat/rooms_list_template.html",
+            controller: "RoomsListController"
           }
-        },
-        params: {
-          uid: null
         },
         nativeTransitionsAndroid: {
           "type": "fade"

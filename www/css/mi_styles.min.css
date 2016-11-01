@@ -1,3 +1,99 @@
+.new-room-modal .users-list-wrapper .user-wrapper {
+  display: flex
+}
+
+.new-room-modal .users-list-wrapper .user-wrapper img {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px
+}
+
+.room-list-wrapper .room-wrapper {
+  display: flex
+}
+
+.room-list-wrapper .room-wrapper img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px
+}
+
+.error {
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  background: #ff565d;
+  padding: 2%
+}
+
+.view-wrapper {
+  background-color: #f9f9f9
+}
+
+.mi-bar {
+  display: flex;
+  align-items: center
+}
+
+.mi-bar .mi-bar-title {
+  font-size: 20px;
+  margin: 0;
+  color: #fff;
+  width: 50%;
+  text-align: center
+}
+
+.mi-bar .buttons {
+  width: 25%;
+  text-align: center
+}
+
+.mi-bar .buttons p {
+  margin: 0;
+  width: 100%
+}
+
+.pane {
+  background: 0 0
+}
+
+.platform-android .bar .title {
+  text-align: center
+}
+
+.bar-positive-900 {
+  background: #4e7ac5 !important
+}
+
+.bar-positive-900 button {
+  color: #fff
+}
+
+* {
+  box-shadow: none !important
+}
+
+.mi-checkbox label {
+  border: none;
+  color: #fff;
+  font-size: 16px
+}
+
+.mi-checkbox label .checkbox input:before, .mi-checkbox label .checkbox-icon:before {
+  background: 0 0;
+  border-radius: 0
+}
+
+.mi-checkbox label .checkbox .checkbox-icon:before, .mi-checkbox label .checkbox input:before {
+  border-color: #11c1f3
+}
+
+.mi-checkbox label .checkbox input:checked + .checkbox-icon:before, .mi-checkbox label .checkbox input:checked:before {
+  background: #11c1f3;
+  border-color: #11c1f3;
+  border-radius: 0
+}
+
 .dashboard .scroll {
   padding-top: 20px
 }
@@ -282,82 +378,6 @@
   color: #fff
 }
 
-.error {
-  color: #fff;
-  text-align: center;
-  font-size: 18px;
-  background: #ff565d;
-  padding: 2%
-}
-
-.view-wrapper {
-  background-color: #f9f9f9
-}
-
-.mi-bar {
-  display: flex;
-  align-items: center
-}
-
-.mi-bar .mi-bar-title {
-  font-size: 20px;
-  margin: 0;
-  color: #fff;
-  width: 50%;
-  text-align: center
-}
-
-.mi-bar .buttons {
-  width: 25%;
-  text-align: center
-}
-
-.mi-bar .buttons p {
-  margin: 0;
-  width: 100%
-}
-
-.pane {
-  background: 0 0
-}
-
-.platform-android .bar .title {
-  text-align: center
-}
-
-.bar-positive-900 {
-  background: #4e7ac5 !important
-}
-
-.bar-positive-900 button {
-  color: #fff
-}
-
-* {
-  box-shadow: none !important
-}
-
-.mi-checkbox label {
-  border: none;
-  color: #fff;
-  font-size: 16px
-}
-
-.mi-checkbox label .checkbox input:before, .mi-checkbox label .checkbox-icon:before {
-  background: 0 0;
-  border-radius: 0
-}
-
-.mi-checkbox label .checkbox .checkbox-icon:before, .mi-checkbox label .checkbox input:before {
-  border-color: #11c1f3
-}
-
-.mi-checkbox label .checkbox input:checked + .checkbox-icon:before, .mi-checkbox label .checkbox input:checked:before {
-  background: #11c1f3;
-  border-color: #11c1f3;
-  border-radius: 0
-}
-
 ion-infinite-scroll:not(.active) .icon:before, ion-infinite-scroll:not(.active) .spinner {
   display: inline-block
 }
@@ -513,30 +533,6 @@ ion-infinite-scroll:not(.active) .icon:before, ion-infinite-scroll:not(.active) 
   padding: 1%
 }
 
-.tabs-wrapper .tabs a i {
-  font-size: 22px
-}
-
-.tabs-wrapper .tab-item.activated {
-  height: 48px
-}
-
-.tabs-wrapper .users-sidemenu-wrapper, .tabs-wrapper ion-nav-buttons .right-buttons {
-  color: #fff
-}
-
-.tabs-wrapper .users-sidemenu-wrapper ion-header-bar {
-  background: #2c456f
-}
-
-.tabs-wrapper .users-sidemenu-wrapper ion-header-bar .title {
-  color: #fff
-}
-
-.tabs-wrapper .users-sidemenu-wrapper ion-content {
-  background: #202631
-}
-
 .user .user-header {
   display: flex;
   flex-direction: column
@@ -663,4 +659,28 @@ ion-infinite-scroll:not(.active) .icon:before, ion-infinite-scroll:not(.active) 
 
 #user-tabs-wrapper {
   border-top: 1px solid #dcdcdc
+}
+
+.tabs-wrapper .tabs a i {
+  font-size: 22px
+}
+
+.tabs-wrapper .tab-item.activated {
+  height: 48px
+}
+
+.tabs-wrapper .users-sidemenu-wrapper, .tabs-wrapper ion-nav-buttons .right-buttons {
+  color: #fff
+}
+
+.tabs-wrapper .users-sidemenu-wrapper ion-header-bar {
+  background: #2c456f
+}
+
+.tabs-wrapper .users-sidemenu-wrapper ion-header-bar .title {
+  color: #fff
+}
+
+.tabs-wrapper .users-sidemenu-wrapper ion-content {
+  background: #202631
 }

@@ -1,0 +1,35 @@
+<ion-modal-view class="new-room-modal">
+  <ion-header-bar class="bar-positive mi-bar">
+    <div class="buttons" ng-click="closeModal()">
+      <i class="ion-ios-close-outline"></i>
+    </div>
+    <h1 class="mi-bar-title"></h1>
+    <button class="buttons post-button" ng-click="createRoom()"
+            ng-disabled="room.message === undefined && roomUsers.length < 1">
+      {{"dashboard.post" | translate}}
+    </button>
+  </ion-header-bar>
+  <ion-content>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">{{"chat.message" | translate}}</span>
+      <input type="text" placeholder="{{'user.message' | translate}}" ng-required="true"
+             ng-model="room.message">
+    </label>
+    <label class="item item-input item-floating-label">
+      <span class="input-label">{{"chat.groupName" | translate}}</span>
+      <input type="text" placeholder="{{'chat.groupName' | translate}}" ng-required="true"
+             ng-model="room.groupName">
+    </label>
+
+    <div class="users-list-wrapper" ng-repeat="user in users" ng-if="user.uid !== currentUser.uid"
+         ng-click="selectUser(user.uid)">
+      <div class="user-wrapper">
+        <img ng-src="{{user.image.path}}">
+
+        <p>{{user.username}}</p>
+      </div>
+
+    </div>
+  </ion-content>
+</ion-modal-view>
+

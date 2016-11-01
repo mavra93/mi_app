@@ -1,0 +1,17 @@
+<ion-view hide-back-button="true">
+  <ion-content class="view-wrapper dashboard">
+    <button ng-click="newRoom()">New room</button>
+    <div class="room-list-wrapper" ng-repeat="room in rooms">
+      <div class="room-wrapper" ng-click="openRoom(room)">
+        <img ng-src="{{room.image}}">
+
+        <div class="room-details">
+          <p>{{room.name}}</p>
+
+          <p><span am-time-ago="(-1*room.created) | amFromUnix | amLocal"></span></p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+
