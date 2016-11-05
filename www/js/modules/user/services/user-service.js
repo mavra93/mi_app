@@ -54,6 +54,27 @@ function UserService($q, $cordovaCamera, $translate, localStorageService, amMome
     return users;
   };
 
+  /**
+   * @param usersId[Array] - Array of two user uid-s
+   */
+
+  this.setPrivateChat = (usersId) => {
+    usersId.forEach((id, key) => {
+      this.users.forEach(user => {
+        if (user.uid === id) {
+          if (!user.privateChats) {
+            user.privateChats = [];
+          }
+          let idKey = key === 0 ? 1 : 0;
+          user.privateChats.push(usersId[idKey]);
+          firebase.database().ref("users/" + user.uid).update({
+            privateChats: user.privateChats
+          });
+        }
+      })
+    })
+  };
+
   this.getCurrentUserData = (id) => {
     let q = $q.defer();
     let usersRef = firebase.database().ref("users/");

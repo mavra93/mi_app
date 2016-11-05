@@ -1,4 +1,4 @@
-<ion-modal-view class="new-room-modal">
+<ion-modal-view class="room-modal">
   <ion-header-bar class="bar-positive mi-bar">
     <div class="buttons" ng-click="removeModal()">
       <i class="ion-ios-close-outline"></i>
@@ -6,9 +6,30 @@
     <h1 class="mi-bar-title"></h1>
   </ion-header-bar>
   <ion-content>
-    <div ng-repeat="message in messages">
-      {{message.message}}
-    </div>
+    <ul id="chat-messages">
+      <li class="message" ng-class="{'message-right': user.uid === message.author}" ng-repeat="message in messages">
+        <author-image uid="message.author"></author-image>
+        <div class="bubble">
+          {{message.message}}
+          <div class="corner"></div>
+          <span am-time-ago="(-1*message.created) | amFromUnix | amLocal"></span>
+        </div>
+      </li>
+      <div ng-show="hasMoreData">
+        <ion-infinite-scroll on-infinite="loadMore()">
+        </ion-infinite-scroll>
+      </div>
+    </ul>
+
   </ion-content>
+  <div class="bar bar-footer">
+    <form name="addMessage">
+      <input type="text" name="message" placeholder="{{'dashboard.writeComment' | translate}}"
+             ng-model="newMessageText" ng-required="true">
+      <button ng-click="newMessage(newMessageText)" ng-disabled="!addMessage.$dirty || !addMessage.$valid"><i
+        class="ion-android-send"></i></button>
+    </form>
+
+  </div>
 </ion-modal-view>
 

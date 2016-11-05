@@ -48,7 +48,7 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
   });
 
 
-  //Load 4 more posts
+  //Load 8 more posts
   $scope.loadMore = () => {
     if ($scope.posts.length < 1) {
       $scope.hasMoreData = true;
@@ -191,6 +191,6 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
     })
   };
 
-  //Load 4 posts on start
+  //Load 8 posts on start
   $scope.loadMore();
 });

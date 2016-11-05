@@ -6,10 +6,6 @@ angular.module("miApp").controller("NewRoomController", function ($scope, parame
     groupName: ""
   };
 
-  $scope.closeModal = () => {
-    $scope.removeModal();
-  };
-
   let checkPrivateChat = () => {
     if ($scope.currentUser.privateChats && $scope.roomUsers.length === 2) {
       return ($scope.currentUser.privateChats.indexOf($scope.roomUsers[1]) > -1);
@@ -20,10 +16,12 @@ angular.module("miApp").controller("NewRoomController", function ($scope, parame
     if (!checkPrivateChat()) {
       ChatService.createRoom($scope.room, $scope.roomUsers, $scope.currentUser).then(()=> {
         if ($scope.roomUsers.length === 2) {
-          ChatService.setPrivateChat($scope.roomUsers);
+          UserService.setPrivateChat($scope.roomUsers);
         }
       });
       $scope.removeModal();
+    } else {
+      alert("You already have chat with this person");
     }
   };
   $scope.users = UserService.storeUsers();
@@ -32,7 +30,17 @@ angular.module("miApp").controller("NewRoomController", function ($scope, parame
     $scope.roomUsers = [$scope.currentUser.uid];
   });
 
-  $scope.selectUser = (id) => {
-    $scope.roomUsers.push(id);
+  $scope.selectUser = (user) => {
+    if (user.selected) {
+      $scope.roomUsers.forEach((userId, key) => {
+        if (userId === user.uid) {
+          user.selected = false;
+          $scope.roomUsers.splice(key, 1);
+        }
+      })
+    } else {
+      user.selected = true;
+      $scope.roomUsers.push(user.uid);
+    }
   }
 });

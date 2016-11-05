@@ -1,6 +1,7 @@
 {
   "chat": {
     "groupName": "Ime grupe",
-    "message": "Poruka"
+    "message": "Poruka",
+    "send": "Pošalji"
   }
 }

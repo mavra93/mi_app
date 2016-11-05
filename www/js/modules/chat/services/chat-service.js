@@ -1,6 +1,10 @@
 "use strict";
 function ChatService($q) {
 
+  this.getMessageRef = (id) => {
+    return firebase.database().ref("rooms/" + id + "/messages");
+  };
+
   /**
    * @param room[Object] - New room object
    * @param users[Array] - Array of users that have permission to see this room
@@ -27,25 +31,13 @@ function ChatService($q) {
     return q.promise
   };
 
-  /**
-   * @param usersId[Array] - Array of two user uid-s
-   */
-
-  this.setPrivateChat = (usersId) => {
-    usersId.forEach((id, key) => {
-      this.users.forEach(user => {
-        if (user.uid === id) {
-          if (!user.privateChats) {
-            user.privateChats = [];
-          }
-          let idKey = key === 0 ? 1 : 0;
-          user.privateChats.push(usersId[idKey]);
-          firebase.database().ref("users/" + user.uid).update({
-            privateChats: user.privateChats
-          });
-        }
-      })
-    })
+  this.newMessage = (roomId, user, message, lastKey) => {
+    let messageRef = this.getMessageRef(roomId);
+    messageRef.child(lastKey).set({
+      message: message,
+      created: -moment().unix(),
+      author: user.uid
+    });
   };
 
 }

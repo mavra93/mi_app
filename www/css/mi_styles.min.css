@@ -1,99 +1,3 @@
-.new-room-modal .users-list-wrapper .user-wrapper {
-  display: flex
-}
-
-.new-room-modal .users-list-wrapper .user-wrapper img {
-  width: 40px;
-  height: 40px;
-  border-radius: 40px
-}
-
-.room-list-wrapper .room-wrapper {
-  display: flex
-}
-
-.room-list-wrapper .room-wrapper img {
-  width: 50px;
-  height: 50px;
-  border-radius: 50px
-}
-
-.error {
-  color: #fff;
-  text-align: center;
-  font-size: 18px;
-  background: #ff565d;
-  padding: 2%
-}
-
-.view-wrapper {
-  background-color: #f9f9f9
-}
-
-.mi-bar {
-  display: flex;
-  align-items: center
-}
-
-.mi-bar .mi-bar-title {
-  font-size: 20px;
-  margin: 0;
-  color: #fff;
-  width: 50%;
-  text-align: center
-}
-
-.mi-bar .buttons {
-  width: 25%;
-  text-align: center
-}
-
-.mi-bar .buttons p {
-  margin: 0;
-  width: 100%
-}
-
-.pane {
-  background: 0 0
-}
-
-.platform-android .bar .title {
-  text-align: center
-}
-
-.bar-positive-900 {
-  background: #4e7ac5 !important
-}
-
-.bar-positive-900 button {
-  color: #fff
-}
-
-* {
-  box-shadow: none !important
-}
-
-.mi-checkbox label {
-  border: none;
-  color: #fff;
-  font-size: 16px
-}
-
-.mi-checkbox label .checkbox input:before, .mi-checkbox label .checkbox-icon:before {
-  background: 0 0;
-  border-radius: 0
-}
-
-.mi-checkbox label .checkbox .checkbox-icon:before, .mi-checkbox label .checkbox input:before {
-  border-color: #11c1f3
-}
-
-.mi-checkbox label .checkbox input:checked + .checkbox-icon:before, .mi-checkbox label .checkbox input:checked:before {
-  background: #11c1f3;
-  border-color: #11c1f3;
-  border-radius: 0
-}
-
 .dashboard .scroll {
   padding-top: 20px
 }
@@ -378,6 +282,82 @@
   color: #fff
 }
 
+.error {
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+  background: #ff565d;
+  padding: 2%
+}
+
+.view-wrapper {
+  background-color: #f9f9f9
+}
+
+.mi-bar {
+  display: flex;
+  align-items: center
+}
+
+.mi-bar .mi-bar-title {
+  font-size: 20px;
+  margin: 0;
+  color: #fff;
+  width: 50%;
+  text-align: center
+}
+
+.mi-bar .buttons {
+  width: 25%;
+  text-align: center
+}
+
+.mi-bar .buttons p {
+  margin: 0;
+  width: 100%
+}
+
+.pane {
+  background: 0 0
+}
+
+.platform-android .bar .title {
+  text-align: center
+}
+
+.bar-positive-900 {
+  background: #4e7ac5 !important
+}
+
+.bar-positive-900 button {
+  color: #fff
+}
+
+* {
+  box-shadow: none !important
+}
+
+.mi-checkbox label {
+  border: none;
+  color: #fff;
+  font-size: 16px
+}
+
+.mi-checkbox label .checkbox input:before, .mi-checkbox label .checkbox-icon:before {
+  background: 0 0;
+  border-radius: 0
+}
+
+.mi-checkbox label .checkbox .checkbox-icon:before, .mi-checkbox label .checkbox input:before {
+  border-color: #11c1f3
+}
+
+.mi-checkbox label .checkbox input:checked + .checkbox-icon:before, .mi-checkbox label .checkbox input:checked:before {
+  background: #11c1f3;
+  border-color: #11c1f3;
+  border-radius: 0
+}
+
 ion-infinite-scroll:not(.active) .icon:before, ion-infinite-scroll:not(.active) .spinner {
   display: inline-block
 }
@@ -533,6 +513,30 @@ ion-infinite-scroll:not(.active) .icon:before, ion-infinite-scroll:not(.active) 
   padding: 1%
 }
 
+.tabs-wrapper .tabs a i {
+  font-size: 22px
+}
+
+.tabs-wrapper .tab-item.activated {
+  height: 48px
+}
+
+.tabs-wrapper .users-sidemenu-wrapper, .tabs-wrapper ion-nav-buttons .right-buttons {
+  color: #fff
+}
+
+.tabs-wrapper .users-sidemenu-wrapper ion-header-bar {
+  background: #2c456f
+}
+
+.tabs-wrapper .users-sidemenu-wrapper ion-header-bar .title {
+  color: #fff
+}
+
+.tabs-wrapper .users-sidemenu-wrapper ion-content {
+  background: #202631
+}
+
 .user .user-header {
   display: flex;
   flex-direction: column
@@ -661,26 +665,170 @@ ion-infinite-scroll:not(.active) .icon:before, ion-infinite-scroll:not(.active) 
   border-top: 1px solid #dcdcdc
 }
 
-.tabs-wrapper .tabs a i {
-  font-size: 22px
+.new-room-modal .users-list {
+  padding: 5%
 }
 
-.tabs-wrapper .tab-item.activated {
-  height: 48px
+.new-room-modal .users-list .users-list-wrapper {
+  display: flex;
+  justify-content: space-between;
+  padding: 2%;
+  border-bottom: 1px solid #dcdcdc;
+  align-items: center
 }
 
-.tabs-wrapper .users-sidemenu-wrapper, .tabs-wrapper ion-nav-buttons .right-buttons {
-  color: #fff
+.new-room-modal .users-list .users-list-wrapper .user-wrapper {
+  display: flex;
+  align-items: center
 }
 
-.tabs-wrapper .users-sidemenu-wrapper ion-header-bar {
-  background: #2c456f
+.new-room-modal .users-list .users-list-wrapper .user-wrapper img {
+  width: 40px;
+  height: 40px;
+  border-radius: 40px
 }
 
-.tabs-wrapper .users-sidemenu-wrapper ion-header-bar .title {
-  color: #fff
+.new-room-modal .users-list .users-list-wrapper .user-wrapper p {
+  padding-left: 15px;
+  margin: 0
 }
 
-.tabs-wrapper .users-sidemenu-wrapper ion-content {
-  background: #202631
+.new-room-modal .users-list .users-list-wrapper .user-selected {
+  border: 1px solid #1bc959;
+  border-radius: 6px;
+  background: #1bc959;
+  color: #fff;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  padding: 2%
+}
+
+.room-list-wrapper .room-wrapper {
+  padding: 2%;
+  display: flex
+}
+
+.room-list-wrapper .room-wrapper img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50px
+}
+
+.room-list-wrapper .room-wrapper .room-details {
+  width: 80%;
+  padding-left: 15px
+}
+
+.room-list-wrapper .room-wrapper .room-details .room-last-message {
+  color: #979797;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #dcdcdc
+}
+
+.room-modal .bar {
+  border-top: 1px solid #dcdcdc
+}
+
+.room-modal .bar form {
+  width: 100%;
+  display: flex
+}
+
+.room-modal .bar form input {
+  padding-top: 10px;
+  padding-left: 20px;
+  width: 80%
+}
+
+.room-modal .bar form button {
+  width: 20%;
+  background: 0 0;
+  border: none;
+  font-size: 28px;
+  color: #11c1f3
+}
+
+#chat-messages {
+  overflow: scroll;
+  height: 100vh;
+  padding-bottom: 60px
+}
+
+#chat-messages label {
+  color: #aab8c2;
+  font-weight: 600;
+  font-size: 12px;
+  text-align: center;
+  margin: 15px 0;
+  width: 290px;
+  display: block
+}
+
+#chat-messages .message {
+  padding: 0 0 30px 58px;
+  clear: both;
+  margin-bottom: 45px
+}
+
+#chat-messages .message img {
+  float: left;
+  margin-left: -38px;
+  border-radius: 50%;
+  width: 30px;
+  margin-top: 12px
+}
+
+#chat-messages .message .bubble {
+  background: #f0f4f7;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 12px 13px;
+  border-radius: 5px 5px 5px 0;
+  color: #8495a3;
+  position: relative;
+  float: left
+}
+
+#chat-messages .message-right {
+  padding: 0 58px 30px 0;
+  margin-right: -19px;
+  margin-left: 19px
+}
+
+#chat-messages .message-right .bubble {
+  float: right;
+  border-radius: 5px 5px 0
+}
+
+#chat-messages .message-right .corner {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/bubble-cornerR.png) no-repeat;
+  left: auto;
+  right: -5px
+}
+
+#chat-messages .message-right img {
+  float: right;
+  margin-left: 0;
+  margin-right: -38px
+}
+
+.bubble .corner {
+  background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/bubble-corner.png) no-repeat;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  left: -5px;
+  bottom: 0
+}
+
+.bubble span {
+  color: #aab8c2;
+  font-size: 11px;
+  position: absolute;
+  right: 0;
+  bottom: -22px;
+  min-width: 100px;
+  text-align: right
 }

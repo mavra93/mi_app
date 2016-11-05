@@ -1,35 +1,40 @@
 <ion-modal-view class="new-room-modal">
+  <ng-form name="RoomForm">
   <ion-header-bar class="bar-positive mi-bar">
-    <div class="buttons" ng-click="closeModal()">
-      <i class="ion-ios-close-outline"></i>
+    <div class="buttons" ng-click="removeModal()">
+      {{"global.cancel" | translate}}
     </div>
     <h1 class="mi-bar-title"></h1>
     <button class="buttons post-button" ng-click="createRoom()"
-            ng-disabled="room.message === undefined && roomUsers.length < 1">
-      {{"dashboard.post" | translate}}
+            ng-disabled="!RoomForm.$valid || roomUsers.length < 2">
+      {{"chat.send" | translate}}
     </button>
   </ion-header-bar>
   <ion-content>
     <label class="item item-input item-floating-label">
       <span class="input-label">{{"chat.message" | translate}}</span>
-      <input type="text" placeholder="{{'user.message' | translate}}" ng-required="true"
-             ng-model="room.message">
+      <textarea placeholder="{{'chat.message' | translate}}" name="message" ng-required="true"
+                ng-model="room.message"></textarea>
     </label>
-    <label class="item item-input item-floating-label">
+    <label class="item item-input item-floating-label" ng-if="roomUsers.length > 2">
       <span class="input-label">{{"chat.groupName" | translate}}</span>
-      <input type="text" placeholder="{{'chat.groupName' | translate}}" ng-required="true"
+      <input type="text" placeholder="{{'chat.groupName' | translate}}" name="groupName" ng-required="true"
              ng-model="room.groupName">
     </label>
 
-    <div class="users-list-wrapper" ng-repeat="user in users" ng-if="user.uid !== currentUser.uid"
-         ng-click="selectUser(user.uid)">
-      <div class="user-wrapper">
-        <img ng-src="{{user.image.path}}">
+    <div class="users-list">
+      <div class="users-list-wrapper" ng-repeat="user in users" ng-if="user.uid !== currentUser.uid"
+           ng-click="selectUser(user)">
+        <div class="user-wrapper">
+          <img ng-src="{{user.image.path}}">
 
-        <p>{{user.username}}</p>
+          <p>{{user.username}}</p>
+        </div>
+        <div class="user-selected" ng-if="user.selected">SELECTED</div>
       </div>
-
     </div>
+
   </ion-content>
+  </ng-form>
 </ion-modal-view>
 

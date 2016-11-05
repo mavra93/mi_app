@@ -1,7 +1,8 @@
 {
   "chat": {
     "groupName": "Group Name",
-    "message": "Message"
+    "message": "Message",
+    "send": "Send"
   }
 }
 

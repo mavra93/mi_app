@@ -2,6 +2,7 @@
 angular.module("miApp").controller("RoomsListController", function ($scope, ModalService, UserService) {
 
   $scope.newRoom = () => {
+    newRoom = true;
     ModalService.show('templates/modules/chat/new_room_template.html', 'NewRoomController', {
         id: user.uid
       })
@@ -16,7 +17,9 @@ angular.module("miApp").controller("RoomsListController", function ($scope, Moda
 
   $scope.openRoom = (room) => {
     ModalService.show('templates/modules/chat/room_template.html', 'RoomCtrl', {
-        room: room
+        room: room,
+        user: user,
+        users: allUsers
       })
       .then(function (result) {
         if (!result) {
@@ -75,7 +78,14 @@ angular.module("miApp").controller("RoomsListController", function ($scope, Moda
       $scope.$applyAsync();
       newRoom = false;
     }
+  });
 
+  roomsRef.on("child_changed", (data) => {
+    $scope.rooms.forEach(room => {
+      if (data.key === room.$id) {
+        room.messages = data.val().messages;
+      }
+    })
   });
 
 
