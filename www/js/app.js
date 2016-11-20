@@ -1,4 +1,4 @@
-angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ngCordova", "angularMoment", "ionic-native-transitions", "jett.ionic.scroll.sista", "firebase"])
+angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ngCordova", "angularMoment", "ionic-native-transitions", "jett.ionic.scroll.sista", "firebase", "ionic.cloud", "ionic-timepicker", "ionic-material"])
 
   .run(function ($ionicPlatform, $rootScope, $state) {
     $ionicPlatform.ready(function () {
@@ -31,7 +31,20 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
     });
   })
 
-  .config(function ($stateProvider, $urlRouterProvider, $translateProvider, $ionicConfigProvider) {
+  .config(function ($stateProvider, $urlRouterProvider, $translateProvider, $ionicConfigProvider, $ionicCloudProvider) {
+    $ionicCloudProvider.init({
+      "core": {
+        "app_id": "82bb215b"
+      },
+      "push": {
+        "sender_id": "988618547226",
+        "pluginConfig": {
+          "android": {
+            "iconColor": "#343434"
+          }
+        }
+      }
+    });
     $ionicConfigProvider.views.forwardCache(true);
     $ionicConfigProvider.views.maxCache(0);
     $translateProvider.useSanitizeValueStrategy("sanitizeParameters");
@@ -90,6 +103,18 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           rooms: {
             templateUrl: "templates/modules/chat/rooms_list_template.html",
             controller: "RoomsListController"
+          }
+        },
+        nativeTransitionsAndroid: {
+          "type": "fade"
+        }
+      })
+      .state("app.mi", {
+        url: "/mi",
+        views: {
+          mi: {
+            templateUrl: "templates/modules/mi/mi_template.html",
+            controller: "MiCtrl"
           }
         },
         nativeTransitionsAndroid: {

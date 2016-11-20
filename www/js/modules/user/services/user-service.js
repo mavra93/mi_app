@@ -41,7 +41,8 @@ function UserService($q, $cordovaCamera, $translate, localStorageService, amMome
       username: user.displayName,
       image: {
         path: user.photoURL
-      }
+      },
+      deviceToken: user.device_token
     });
   };
 

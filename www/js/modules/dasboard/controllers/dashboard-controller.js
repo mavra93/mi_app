@@ -1,5 +1,5 @@
 "use strict";
-angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Auth, UserService, DashboardService, $ionicModal, $ionicScrollDelegate, $firebaseObject, $firebaseArray) {
+angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Auth, UserService, DashboardService, $ionicModal, $ionicScrollDelegate, $firebaseObject, $firebaseArray, $ionicPush) {
 
   $scope.users = UserService.users;
   $scope.posts = [];
@@ -74,6 +74,13 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
         });
       }
       $scope.user = userProfile;
+
+      $ionicPush.register().then(t => {
+        return $ionicPush.saveToken(t);
+      }).then(t => {
+        user.device_token = t.token;
+        UserService.setUser(user);
+      });
     } else {
       $state.go("login");
     }

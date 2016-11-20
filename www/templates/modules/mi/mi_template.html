@@ -1,0 +1,14 @@
+<ion-view hide-back-button="true">
+  <ion-content class="view-wrapper dashboard animate-fade-slide-in">
+    <button ng-click="newQuote()" id="fab-profile" class="button button-fab button-fab-bottom-right button-calm pane"><i
+      class="icon ion-plus"></i></button>
+    <div id="quote-wrapper" class="item card-item" ng-repeat="quote in quotes">
+      <div>
+        <div>
+          <p>{{quote.message}}</p>
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
+
