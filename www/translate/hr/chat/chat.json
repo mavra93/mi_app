@@ -2,6 +2,8 @@
   "chat": {
     "groupName": "Ime grupe",
     "message": "Poruka",
-    "send": "Pošalji"
+    "send": "Pošalji",
+    "writeMessage": "Napiši poruku",
+    "loadMore": "Učitaj više..."
   }
 }

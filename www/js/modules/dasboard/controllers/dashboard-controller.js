@@ -1,5 +1,7 @@
 "use strict";
-angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Auth, UserService, DashboardService, $ionicModal, $ionicScrollDelegate, $firebaseObject, $firebaseArray, $ionicPush) {
+angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Auth, UserService, DashboardService, $ionicModal, $ionicScrollDelegate, $firebaseObject, $firebaseArray, $ionicPush, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+
+  ionicMaterialInk.displayEffect();
 
   $scope.users = UserService.users;
   $scope.posts = [];
@@ -36,6 +38,11 @@ angular.module("miApp").controller("DashboardCtrl", function ($scope, $state, Au
     $scope.$broadcast("scroll.infiniteScrollComplete");
     $scope.$applyAsync();
     newPost = false;
+    $timeout(()=> {
+      ionicMaterialMotion.ripple({
+        selector: '.animate-ripple .item'
+      });
+    }, 200);
   });
 
   postsRef.on("child_changed", (data) => {

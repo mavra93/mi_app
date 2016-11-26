@@ -1,7 +1,8 @@
 "use strict";
 angular.module("miApp").controller("RoomCtrl", function ($scope, parameters, ChatService, $ionicScrollDelegate, $timeout) {
   let messageRef = ChatService.getMessageRef(parameters.room.$id);
-  let scrollRef = new firebase.util.Scroll(messageRef, "$key");
+  let scrollRef = new firebase.util.Scroll(messageRef, "created");
+  let unshift;
 
   $scope.user = parameters.user;
 
@@ -26,29 +27,30 @@ angular.module("miApp").controller("RoomCtrl", function ($scope, parameters, Cha
 
   scrollRef.on("child_added", messages => {
     let message = messages.val();
-    $scope.hasMoreData = true;
-    $scope.messages.push(message);
-
-    $scope.$broadcast("scroll.infiniteScrollComplete");
+    let newMessage;
+    if ($scope.messages.length > 0) {
+      newMessage = message.created * -1 > $scope.messages[$scope.messages.length - 1].created * -1;
+    }
+    if (unshift && !newMessage) {
+      $scope.messages.unshift(message);
+    } else if (newMessage) {
+      $scope.messages.push(message);
+    }
     $scope.$applyAsync();
     scrollBottom();
   });
 
-  $scope.loadMore = () => {
-    if ($scope.messages.length < 1) {
-      $scope.hasMoreData = true;
-    } else {
-      $scope.hasMoreData = false;
-    }
+  $scope.loadMore = (unshiftValue) => {
+    unshift = unshiftValue;
     scrollRef.scroll.next(8);
-
   };
 
-  $scope.loadMore();
+  $scope.loadMore(true);
 
 
   //Add new message
   $scope.newMessage = (message) => {
+    unshift = false;
     ChatService.newMessage(parameters.room.$id, parameters.user, message, $scope.messages.length);
     $scope.message = "";
   };

@@ -7,6 +7,11 @@
   </ion-header-bar>
   <ion-content>
     <ul id="chat-messages">
+      <li class="load-more-wrapper">
+        <button ng-click="loadMore(true)" class="button button-small button-outline button-calm">
+          {{"chat.loadMore" | translate}}
+        </button>
+      </li>
       <li class="message" ng-class="{'message-right': user.uid === message.author}" ng-repeat="message in messages">
         <author-image uid="message.author"></author-image>
         <div class="bubble">
@@ -15,16 +20,12 @@
           <span am-time-ago="(-1*message.created) | amFromUnix | amLocal"></span>
         </div>
       </li>
-      <div ng-show="hasMoreData">
-        <ion-infinite-scroll on-infinite="loadMore()">
-        </ion-infinite-scroll>
-      </div>
     </ul>
 
   </ion-content>
   <div class="bar bar-footer">
     <form name="addMessage">
-      <input type="text" name="message" placeholder="{{'dashboard.writeComment' | translate}}"
+      <input type="text" name="message" placeholder="{{'chat.writeMessage' | translate}}"
              ng-model="newMessageText" ng-required="true">
       <button ng-click="newMessage(newMessageText)" ng-disabled="!addMessage.$dirty || !addMessage.$valid"><i
         class="ion-android-send"></i></button>

@@ -1,5 +1,7 @@
 "use strict";
-angular.module("miApp").controller("RoomsListController", function ($scope, ModalService, UserService) {
+angular.module("miApp").controller("RoomsListController", function ($scope, ModalService, UserService, $timeout, ionicMaterialMotion, ionicMaterialInk) {
+
+  ionicMaterialInk.displayEffect();
 
   $scope.newRoom = () => {
     newRoom = true;
@@ -77,6 +79,11 @@ angular.module("miApp").controller("RoomsListController", function ($scope, Moda
       $scope.$broadcast("scroll.infiniteScrollComplete");
       $scope.$applyAsync();
       newRoom = false;
+      $timeout(()=> {
+        ionicMaterialMotion.ripple({
+          selector: '.animate-ripple .item'
+        });
+      }, 200);
     }
   });
 

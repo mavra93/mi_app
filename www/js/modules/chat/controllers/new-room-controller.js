@@ -1,5 +1,5 @@
 "use strict";
-angular.module("miApp").controller("NewRoomController", function ($scope, parameters, ChatService, UserService) {
+angular.module("miApp").controller("NewRoomController", function ($scope, parameters, ChatService, UserService, GlobalService) {
   $scope.roomUsers = [];
   $scope.room = {
     message: "",
@@ -14,10 +14,13 @@ angular.module("miApp").controller("NewRoomController", function ($scope, parame
 
   $scope.createRoom = () => {
     if (!checkPrivateChat()) {
-      ChatService.createRoom($scope.room, $scope.roomUsers, $scope.currentUser).then(()=> {
-        if ($scope.roomUsers.length === 2) {
-          UserService.setPrivateChat($scope.roomUsers);
-        }
+      GlobalService.encodeImage("../image/group.png", (data) => {
+        $scope.room.image = $scope.roomUsers.length > 2 ? data : null;
+        ChatService.createRoom($scope.room, $scope.roomUsers, $scope.currentUser).then(()=> {
+          if ($scope.roomUsers.length === 2) {
+            UserService.setPrivateChat($scope.roomUsers);
+          }
+        });
       });
       $scope.removeModal();
     } else {

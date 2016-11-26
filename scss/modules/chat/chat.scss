@@ -45,13 +45,18 @@
       border-radius: 50px;
     }
     .room-details {
-      width: 80%;
+      width: 100%;
       padding-left: 15px;
+      h4 {
+        font-size: 14px;
+        font-weight: bold;
+      }
       .room-last-message {
         color: $grey;
         display: flex;
         justify-content: space-between;
         border-bottom: 1px solid $light-grey;
+        padding-top: 8px;
       }
     }
   }
@@ -77,12 +82,16 @@
       }
     }
   }
+  ion-content {
+    .scroll {
+      height: auto;
+    }
+  }
 }
 
 #chat-messages {
-  overflow: scroll;
-  height: 100vh;
   padding-bottom: 60px;
+  padding-top: 20px;
   label {
     color: #aab8c2;
     font-weight: 600;
@@ -96,7 +105,7 @@
     padding: 0 0 30px 58px;
     clear: both;
     margin-bottom: 45px;
-
+    border: none;
     img {
       float: left;
       margin-left: -38px;
@@ -117,11 +126,10 @@
   }
   .message-right {
     padding: 0 58px 30px 0;
-    margin-right: -19px;
     margin-left: 19px;
     .bubble {
       float: right;
-      border-radius: 5px 5px 0px 5px;
+      border-radius: 5px 5px 0 5px;
     }
     .corner {
       background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/245657/bubble-cornerR.png") 0 0 no-repeat;
@@ -134,6 +142,17 @@
       margin-right: -38px;
     }
   }
+  .load-more-wrapper {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding-bottom: 30px;
+    button {
+      border-radius: 40px;
+      border: 1px solid #11c1f3;
+    }
+  }
+
 }
 
 .bubble .corner {

@@ -19,6 +19,7 @@ function ChatService($q) {
       name: room.groupName,
       created: date,
       author: user.uid,
+      image: room.image,
       messages: [{
         message: room.message,
         created: date,

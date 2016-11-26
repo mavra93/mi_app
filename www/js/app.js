@@ -55,7 +55,8 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         templateUrl: "templates/modules/signup/signup_template.html",
         controller: "SignupCtrl",
         nativeTransitionsAndroid: {
-          "type": "fade"
+          "type": "fade",
+          "duration": 100
         }
       })
 
@@ -64,7 +65,8 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
         templateUrl: "templates/modules/login/login_template.html",
         controller: "LoginCtrl",
         nativeTransitionsAndroid: {
-          "type": "fade"
+          "type": "fade",
+          "duration": 100
         }
       })
       .state("app", {
@@ -94,7 +96,8 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           username: null
         },
         nativeTransitionsAndroid: {
-          "type": "fade"
+          "type": "fade",
+          "duration": 100
         }
       })
       .state("app.rooms", {
@@ -106,7 +109,8 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           }
         },
         nativeTransitionsAndroid: {
-          "type": "fade"
+          "type": "fade",
+          "duration": 100
         }
       })
       .state("app.mi", {
@@ -118,7 +122,8 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           }
         },
         nativeTransitionsAndroid: {
-          "type": "fade"
+          "type": "fade",
+          "duration": 100
         }
       })
       .state("app.user", {
@@ -142,7 +147,8 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           user: null
         },
         nativeTransitionsAndroid: {
-          "type": "fade"
+          "type": "fade",
+          "duration": 100
         }
       })
       .state("app.settings", {
@@ -154,7 +160,8 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           }
         },
         nativeTransitionsAndroid: {
-          "type": "fade"
+          "type": "fade",
+          "duration": 100
         }
       })
       .state("app.editAccount", {
@@ -175,7 +182,8 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           }
         },
         nativeTransitionsAndroid: {
-          "type": "fade"
+          "type": "fade",
+          "duration": 100
         }
       });
     // if none of the above states are matched, use this as the fallback
