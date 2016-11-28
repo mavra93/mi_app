@@ -553,6 +553,12 @@
   border-radius: 0
 }
 
+#quote-wrapper {
+  background-color: #fff;
+  margin-bottom: 20px;
+  border: 1px solid #dcdcdc
+}
+
 ion-infinite-scroll:not(.active) .icon:before, ion-infinite-scroll:not(.active) .spinner {
   display: inline-block
 }
@@ -635,12 +641,6 @@ ion-infinite-scroll:not(.active) .icon:before, ion-infinite-scroll:not(.active) 
   width: 100%;
   height: 400px;
   border-radius: 6px
-}
-
-#quote-wrapper {
-  background-color: #fff;
-  margin-bottom: 20px;
-  border: 1px solid #dcdcdc
 }
 
 .login-register-wrapper {

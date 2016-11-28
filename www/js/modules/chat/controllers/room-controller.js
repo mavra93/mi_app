@@ -1,5 +1,5 @@
 "use strict";
-angular.module("miApp").controller("RoomCtrl", function ($scope, parameters, ChatService, $ionicScrollDelegate, $timeout) {
+angular.module("miApp").controller("RoomCtrl", function ($scope, parameters, ChatService, GlobalService, $ionicScrollDelegate, $timeout) {
   let messageRef = ChatService.getMessageRef(parameters.room.$id);
   let scrollRef = new firebase.util.Scroll(messageRef, "created");
   let unshift;
@@ -51,7 +51,8 @@ angular.module("miApp").controller("RoomCtrl", function ($scope, parameters, Cha
   //Add new message
   $scope.newMessage = (message) => {
     unshift = false;
-    ChatService.newMessage(parameters.room.$id, parameters.user, message, $scope.messages.length);
+    ChatService.newMessage(parameters.room.$id, parameters.user, message);
+    GlobalService.sendNotification(message, parameters.user, parameters.room.users);
     $scope.message = "";
   };
 

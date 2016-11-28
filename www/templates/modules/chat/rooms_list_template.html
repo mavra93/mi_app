@@ -5,13 +5,10 @@
     <div class="list room-list-wrapper" ng-repeat="room in rooms">
       <div class="room-wrapper item card-item" ng-click="openRoom(room)">
         <img ng-src="{{room.image}}">
-
         <div class="room-details">
           <h4 class="room-name">{{room.name}}</h4>
-
           <div class="room-last-message">
-            <p>{{room.messages[room.messages.length - 1].message | limitTo: 20}}</p>
-
+            <p>{{room.lastMessage.message | limitTo: 20}}</p>
             <p><span am-time-ago="(-1*room.messages[room.messages.length - 1].created) | amFromUnix | amLocal"></span>
             </p>
           </div>

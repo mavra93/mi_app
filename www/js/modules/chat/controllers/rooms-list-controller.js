@@ -5,7 +5,7 @@ angular.module("miApp").controller("RoomsListController", function ($scope, Moda
 
   $scope.newRoom = () => {
     newRoom = true;
-    ModalService.show('templates/modules/chat/new_room_template.html', 'NewRoomController', {
+    ModalService.show("templates/modules/chat/new_room_template.html", "NewRoomController", {
         id: user.uid
       })
       .then(function (result) {
@@ -18,7 +18,7 @@ angular.module("miApp").controller("RoomsListController", function ($scope, Moda
   };
 
   $scope.openRoom = (room) => {
-    ModalService.show('templates/modules/chat/room_template.html', 'RoomCtrl', {
+    ModalService.show("templates/modules/chat/room_template.html", "RoomCtrl", {
         room: room,
         user: user,
         users: allUsers
@@ -59,12 +59,16 @@ angular.module("miApp").controller("RoomsListController", function ($scope, Moda
     }
   };
 
+  let getLastMessage = (messages) => {
+    return messages[Object.keys(messages)[Object.keys(messages).length - 1]];
+  };
 
   scrollRef.on("child_added", rooms => {
     let room = rooms.val();
     if (usersContains(room.users)) {
       $scope.hasMoreData = true;
       room.$id = rooms.key;
+      room.lastMessage = getLastMessage(room.messages);
       if (room.users.length < 3) {
         let roomUser = getRoomUser(room.users);
         room.name = roomUser.username;
@@ -91,18 +95,16 @@ angular.module("miApp").controller("RoomsListController", function ($scope, Moda
     $scope.rooms.forEach(room => {
       if (data.key === room.$id) {
         room.messages = data.val().messages;
+        room.lastMessage = getLastMessage(room.messages);
+        $scope.$applyAsync();
       }
     })
   });
 
 
-  //Load 4 more posts
+  //Load 8 more rooms
   $scope.loadMore = () => {
-    if ($scope.rooms.length < 1) {
-      $scope.hasMoreData = true;
-    } else {
-      $scope.hasMoreData = false;
-    }
+    $scope.hasMoreData = $scope.rooms.length < 1;
     scrollRef.scroll.next(8);
   };
 

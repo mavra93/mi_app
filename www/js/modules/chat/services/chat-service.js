@@ -1,8 +1,10 @@
 "use strict";
 function ChatService($q) {
 
+  let database = firebase.database();
+
   this.getMessageRef = (id) => {
-    return firebase.database().ref("rooms/" + id + "/messages");
+    return database.ref("rooms/" + id + "/messages");
   };
 
   /**
@@ -12,7 +14,7 @@ function ChatService($q) {
    */
 
   this.createRoom = (room, users, user) => {
-    let roomsRef = firebase.database().ref("rooms/");
+    let roomsRef = database.ref("rooms/");
     let q = $q.defer();
     let date = -moment().unix();
     roomsRef.push({
@@ -32,9 +34,16 @@ function ChatService($q) {
     return q.promise
   };
 
-  this.newMessage = (roomId, user, message, lastKey) => {
+  /**
+   * @param roomId[string] - Room unique id
+   * @param user[object] - Message author
+   * @param message[string]
+   */
+
+
+  this.newMessage = (roomId, user, message) => {
     let messageRef = this.getMessageRef(roomId);
-    messageRef.child(lastKey).set({
+    messageRef.push({
       message: message,
       created: -moment().unix(),
       author: user.uid
