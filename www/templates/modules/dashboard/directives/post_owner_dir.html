@@ -4,6 +4,6 @@
   </div>
   <div class="status">
     <p>{{ctrl.user.username}}</p>
-    <span am-time-ago="(-1*ctrl.created) | amFromUnix | amLocal"></span>
+    <span ng-if="ctrl.created" am-time-ago="(-1*ctrl.created) | amFromUnix | amLocal"></span>
   </div>
 </div>

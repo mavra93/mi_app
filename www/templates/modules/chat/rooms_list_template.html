@@ -9,7 +9,8 @@
           <h4 class="room-name">{{room.name}}</h4>
           <div class="room-last-message">
             <p>{{room.lastMessage.message | limitTo: 20}}</p>
-            <p><span am-time-ago="(-1*room.messages[room.messages.length - 1].created) | amFromUnix | amLocal"></span>
+
+            <p><span am-time-ago="(-1*room.lastMessage.created) | amFromUnix | amLocal"></span>
             </p>
           </div>
         </div>

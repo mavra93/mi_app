@@ -4,6 +4,11 @@
     "message": "Poruka",
     "send": "Pošalji",
     "writeMessage": "Napiši poruku",
-    "loadMore": "Učitaj više..."
+    "loadMore": "Učitaj više...",
+    "set": "Postavi",
+    "close": "Zatvori",
+    "once": "Jednom",
+    "everyDay": "Svaki dan",
+    "timePick": "Vrijeme"
   }
 }

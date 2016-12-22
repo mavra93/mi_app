@@ -4,7 +4,12 @@
     "message": "Message",
     "send": "Send",
     "writeMessage": "Write a message",
-    "loadMore": "Load more..."
+    "loadMore": "Load more...",
+    "set": "Set",
+    "close": "Close",
+    "once": "Once",
+    "everyDay": "Every day",
+    "timePick": "Time"
   }
 }
 

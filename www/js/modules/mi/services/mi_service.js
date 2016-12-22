@@ -6,8 +6,11 @@ function MiService($q) {
     quotesRef.push({
       message: quote.message,
       to: selectedUser.deviceToken || "",
+      toID: selectedUser.uid,
       author: user.uid,
-      at: quote.time
+      at: quote.time,
+      repeat: quote.repeat,
+      counter: 0
     });
   };
 
@@ -16,6 +19,7 @@ function MiService($q) {
     let quotes = [];
     quotesRef.orderByChild("author").equalTo(id).on("child_added", data => {
       let quote = data.val();
+      quote.id = data.key;
       quotes.push(quote);
       q.resolve(quotes);
     });

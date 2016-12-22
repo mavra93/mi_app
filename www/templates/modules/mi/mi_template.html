@@ -1,12 +1,15 @@
 <ion-view hide-back-button="true">
-  <ion-content class="view-wrapper dashboard animate-fade-slide-in">
-    <button ng-click="newQuote()" id="fab-profile" class="button button-fab button-fab-bottom-right button-calm pane"><i
-      class="icon ion-plus"></i></button>
-    <div id="quote-wrapper" class="item card-item" ng-repeat="quote in quotes">
-      <div>
-        <div>
+  <button ng-click="newQuote()" id="fab-profile" class="button button-fab button-fab-bottom-right button-calm pane"><i
+    class="icon ion-plus"></i></button>
+  <ion-content class="view-wrapper dashboard">
+    <div class="animate-ripple">
+      <div id="quote-wrapper" class="item card-item" ng-repeat="quote in quotes">
+        <div class="quote-header">
+          <post-owner uid="quote.toID"></post-owner>
+          <span class="badge badge-assertive" ng-class="{'badge-green': quote.counter > 0}">{{quote.counter}}</span>
+        </div>
+        <div class="quote-message">
           <p>{{quote.message}}</p>
-          <span class="badge badge-assertive">0</span>
         </div>
       </div>
     </div>

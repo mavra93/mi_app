@@ -1,6 +1,6 @@
 <ion-view>
   <ion-content class="view-wrapper user">
-    <div class="user-header">
+    <div class="user-header" user-profile-header>
       <div class="top-header">
         <div class="user-header-left">
           <img ng-src="{{userProfile.photoURL}}">
@@ -21,7 +21,7 @@
         <h5>{{userProfile.email}}</h5>
       </div>
     </div>
-    <div class="user-tabs" ng-if="tab === 1">
+    <div class="user-tabs" ng-if="tab === 1" ion-parallax-profile delegate-handle="profileScroll">
       <div class="posts-tab list card posts-list" ng-repeat="post in posts" ng-click="openPostDetails(post)">
         <div class="item item-body">
           <div class="post-title">
@@ -35,7 +35,7 @@
         </div>
       </div>
     </div>
-    <div class="pics-tab" ng-if="tab === 2">
+    <div class="pics-tab" ng-if="tab === 2" ion-parallax-profile delegate-handle="profileScroll">
       <div class="row" ng-repeat="image in images track by $index" ng-if="$index % 4 === 0">
         <div class="col col-25" ng-if="$index < images.length">
           <img ng-src="{{images[$index]}}" width="100%"/>

@@ -38,6 +38,11 @@
   text-align: center;
 }
 
+ion-modal-view {
+  .bar-positive {
+    background: $header-background !important;
+  }
+}
 .bar-positive-900 {
   background: $header-background !important;
   button {

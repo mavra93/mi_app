@@ -2,4 +2,81 @@
   background-color: white;
   margin-bottom: 20px;
   border: 1px solid $light-grey;
+  .quote-header {
+    .post-owner {
+      display: flex;
+      align-items: center;
+      .owner-photo {
+        img {
+          width: 40px;
+          height: 40px;
+          border-radius: 20px;
+        }
+      }
+      .status {
+        padding-left: 20px;
+        p {
+          font-weight: bold;
+        }
+      }
+    }
+    .badge-green {
+      background-color: $algae-green;
+    }
+  }
+  .quote-message {
+    padding: 1%;
+    width: 90%;
+  }
+}
+
+.new-quote-wrapper {
+  .select-time {
+    display: flex;
+    align-items: center;
+    padding-top: 30px;
+    .pick-buttons {
+      display: flex;
+      width: 70%;
+      .pick-button {
+        text-align: center;
+        border: 1px solid $light-grey;
+        border-radius: 6px;
+        color: $grey;
+        width: 50%;
+        margin-right: 20px;
+        padding: 2%;
+        &:first-child {
+          margin-left: 10px;
+        }
+      }
+      .active {
+        background: $algae-green;
+        color: white;
+      }
+    }
+    button {
+      width: 30%;
+      min-height: 0;
+      border-radius: 6px;
+      margin-right: 10px;
+    }
+  }
+
+}
+
+.ionic_timepicker_popup {
+  .popup-body {
+    .heading {
+      background-color: $error-pink;
+    }
+  }
+  .popup-buttons {
+    .button_set {
+      background-color: $error-pink;
+    }
+    .button_close {
+      background-color: $error-pink;
+    }
+  }
 }
