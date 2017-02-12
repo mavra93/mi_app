@@ -3,19 +3,14 @@
     <div class="buttons" ng-click="closePostDetailsModal()">
       <i class="ion-ios-close-outline"></i>
     </div>
+    <p>{{(-1*post.created) | amFromUnix | amDateFormat: "LLL"}}</p>
   </ion-header-bar>
   <ion-content class="view-wrapper" delegate-handle="modalContent">
-    <div class="header" ng-if="post.image">
-      <img ng-src="{{post.image}}">
-    </div>
-    <div class="post-title">
-      <p>{{post.title}}</p>
-    </div>
-    <div class="post-date">
-      <p>{{(-1*post.created) | amFromUnix | amDateFormat: "LLL"}}</p>
-    </div>
     <div class="post-message">
       {{post.message}}
+    </div>
+    <div class="header" ng-if="post.image">
+      <img ng-src="{{post.image}}">
     </div>
   </ion-content>
   <div class="bar bar-footer dashboard-footer">

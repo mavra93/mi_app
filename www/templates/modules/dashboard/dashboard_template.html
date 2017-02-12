@@ -29,11 +29,14 @@
         <div class="new-badge" ng-if="post.new">{{"dashboard.new" | translate | uppercase}}</div>
         <post-owner uid="post.uid" created="post.created"></post-owner>
         <div class="item item-body">
-          <div class="post-image" ng-if="post.image" ng-click="openPostDetails(post)">
+          <div class="post-image" ng-if="post.image">
             <img ng-src="{{post.image}}">
           </div>
-          <div class="post-message" ng-click="openPostDetails(post)">
-            <p>{{post.message | limitTo:100}}</p>
+          <div class="post-message">
+            <p>{{post.message | limitTo:400}}</p>
+
+            <p ng-click="openPostDetails(post)" class="read-more" ng-if="post.message.length >= 400">
+              {{"dashboard.readMore" | translate}}</p>
           </div>
           <div class="comment-footer" ng-click="openCommentModal(post)">
             <div class="chat-icon">

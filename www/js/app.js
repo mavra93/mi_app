@@ -1,6 +1,6 @@
 angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic-material", "LocalStorageModule", "ngCordova", "angularMoment", "ionic-native-transitions", "jett.ionic.scroll.sista", "firebase", "ionic.cloud", "ionic-timepicker", "ionic-material"])
 
-  .run(function ($ionicPlatform, $rootScope, $state) {
+  .run(function ($ionicPlatform, $rootScope, $state, $ionicPush) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -28,6 +28,13 @@ angular.module("miApp", ["ionic", "pascalprecht.translate", "ionMdInput", "ionic
           navigator.app.backHistory();
         }
       }, 100);
+
+      $ionicPush.register({
+        onNotification: function (notification) {
+          return true;
+        }
+      });
+
     });
   })
 
